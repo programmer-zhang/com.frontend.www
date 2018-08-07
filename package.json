@@ -7,12 +7,13 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "pm2": "pm2 start process/test.js"
   },
   "dependencies": {
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "es6-promise": "^4.0.5"
+    "es6-promise": "^4.0.5" 
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
