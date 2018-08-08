@@ -49,7 +49,6 @@
 			    var str = content;  
 			    var newstr = str.replace(reg, "<font color=red>$1</font>");
 				document.getElementById(idVal).innerHTML = newstr;
-
 			}
 		}
 	}
