@@ -3,6 +3,8 @@
 		<div id="highLight">{{testData}}</div>
 		<button @click="searchHighLight('highLight','a')">点击查看高亮</button>
 		<button @click="searchHighLight2('highLight','sb')">点击查看高亮2</button>
+		<!-- <button @click="highlight('highLight','sb')">点击查看高亮2</button> -->
+		<div>{{highlight(testData, 'sb')}}</div>
 	</div>
 </template>
 <script>
@@ -49,7 +51,14 @@
 			    var str = content;  
 			    var newstr = str.replace(reg, "<font color=red>$1</font>");
 				document.getElementById(idVal).innerHTML = newstr;
-			}
+			},
+			highlight: function (b, keyword) {
+			    if (!b) {
+			      return ''
+			    }
+			    let reg = new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + keyword.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1") + ")(?![^<>]*>)(?![^&;]+;)", "gi")
+			    return b.replace(reg, "<font color=red>$1</font>");
+		    }
 		}
 	}
 </script>
