@@ -1,9 +1,10 @@
 <template>
     <div class="hello">
-        <a href="home.html">Home</a>
+        <a href="/home.html">Home</a>
         <a href="/highLight.html">HighLight</a>
         <a href="/pure.html">Pure</a>
         <a href="/pure-model.html">PureModel</a>
+        <a href="/js-test.html">JsTest</a>
     </div>
 </template>
 
