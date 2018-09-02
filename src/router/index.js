@@ -6,6 +6,7 @@ import HighLight from '@/views/highLight.vue'
 import Pure from '@/test/pure.vue'
 import pureModel from '@/test/pure-model.vue'
 import jsTest from '@/views/jsTest.vue'
+import countDown from '@/views/countDown.vue'
 
 
 Vue.use(Router)
@@ -42,6 +43,11 @@ export default new Router({
         path: '/js-test.html',
         name: 'jsTest',
         component: jsTest
-    }        
+    },
+    {
+        path: '/count-down.html',
+        name: 'countDown',
+        component: countDown        
+    }       
   ]
 })

@@ -5,6 +5,7 @@
         <a href="/pure.html">Pure</a>
         <a href="/pure-model.html">PureModel</a>
         <a href="/js-test.html">JsTest</a>
+        <a href="/count-down.html">countDown</a>
     </div>
 </template>
 
