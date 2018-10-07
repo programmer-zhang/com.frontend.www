@@ -9,13 +9,13 @@
 </template>
 <script>
 	export default {
-		data: function(){
+		data(){
 			return {
 				testData: '旅游,旅行,飞机票,火车票,五星级,酒店,住宿,小时房,民宿,客栈,公寓,便宜,打折,查询,预定,预订,助手,app,软件,平台,网站,携程,去哪儿,同程,艺龙,美团,小猪短租,驴妈妈,比特币,以太坊,a,ba,asdf,sbhjfab,sbajaquw,asbckbi',
 			}
 		},
 		methods: {
-			searchHighLight:function(idVal, keyword) {
+			searchHighLight(idVal, keyword) {
 				let pucl = document.getElementById(idVal);
 	            if ("" == keyword) return;
 	            let temp = pucl.innerHTML;
@@ -44,7 +44,7 @@
 	            }
 	            pucl.innerHTML = temp;
 			},
-			searchHighLight2:function(idVal, keyword) {
+			searchHighLight2(idVal, keyword) {
 				var content = document.getElementById(idVal).innerHTML;
 				var s = keyword;
 			    var reg = new RegExp("(" + s + ")", "g");  
@@ -52,7 +52,7 @@
 			    var newstr = str.replace(reg, "<font color=red>$1</font>");
 				document.getElementById(idVal).innerHTML = newstr;
 			},
-			highlight: function (b, keyword) {
+			highlight(b, keyword) {
 			    if (!b) {
 			      return ''
 			    }
