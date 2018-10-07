@@ -19,7 +19,6 @@ export default {
     },
     mounted() {
         this.setTimer(this.timeOut);
-        // setInterval("this.setTimer()",1000); 
     },
     methods: {
     	filterFalse() {
