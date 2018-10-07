@@ -1,7 +1,6 @@
 <template>
 	<div class="home">
 		{{msg}}
-		<div v-for="(item, index) in days">{{index}}</div>
 	</div>
 </template>
 <script>
@@ -9,7 +8,6 @@
 		data: function(){
 			return {
 				msg: '这是home文件',
-				days: 6
 			}
 		}
 	}
