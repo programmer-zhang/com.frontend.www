@@ -6,7 +6,6 @@
         </div>
     </div>
 </template>
-
 <script>
 export default {
     data() {
@@ -18,7 +17,6 @@ export default {
         		{ timeOut: '1860268800000' },
         	],
             timer:'',
-            
         }
     },
     mounted() {
@@ -31,7 +29,6 @@ export default {
             if (time < new Date().getTime()) {
                 return;
             }
-           
             let self = this;
             let timeCount = setInterval(() => {
                 let ts = time - new Date().getTime(); 
@@ -49,7 +46,6 @@ export default {
     }
 }
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .count-down {
