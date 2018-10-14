@@ -6,6 +6,7 @@
         <a href="/pure-model.html">PureModel</a>
         <a href="/js-test.html">JsTest</a>
         <a href="/count-down.html">countDown</a>
+        <a href="/copy.html">copy&paste</a>
     </div>
 </template>
 
