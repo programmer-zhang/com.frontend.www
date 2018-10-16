@@ -11,7 +11,7 @@
 	export default {
 		data(){
 			return {
-				testData: '旅游,旅行,飞机票,火车票,五星级,酒店,住宿,小时房,民宿,客栈,公寓,便宜,打折,查询,预定,预订,助手,app,软件,平台,网站,携程,去哪儿,同程,艺龙,美团,小猪短租,驴妈妈,比特币,以太坊,a,ba,asdf,sbhjfab,sbajaquw,asbckbi',
+				testData: '旅游,旅行,飞机票,火车票,酒店,住宿,小时房,民宿,客栈,公寓,便宜,打折,查询,预定,预订,助手,app,软件,平台,网站,携程,去哪儿,同程,艺龙,美团,小猪短租,驴妈妈,比特币,以太坊,a,ba,asdf,sbhjfab,sbajaquw,asbckbi',
 			}
 		},
 		methods: {
