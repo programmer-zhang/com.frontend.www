@@ -8,6 +8,7 @@ import pureModel from '@/test/pure-model.vue';
 import jsTest from '@/views/jsTest.vue';
 import countDown from '@/views/countDown.vue';
 import copy from '@/views/copy.vue';
+import changeData from '@/views/changeData.vue';
 
 
 Vue.use(Router)
@@ -54,6 +55,11 @@ export default new Router({
         path: '/copy.html',
         name: 'copy',
         component: copy        
-    }           
+    },
+    {
+        path: 'changeData.html',
+        name: 'changeData',
+        component: changeData
+    }         
   ]
 })

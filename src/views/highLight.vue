@@ -54,9 +54,9 @@
 			},
 			highlight(b, keyword) {
 			    if (!b) {
-			      return ''
+			      return '';
 			    }
-			    let reg = new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + keyword.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1") + ")(?![^<>]*>)(?![^&;]+;)", "gi")
+			    let reg = new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + keyword.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1") + ")(?![^<>]*>)(?![^&;]+;)", "gi");
 			    return b.replace(reg, "<font color=red>$1</font>");
 		    }
 		}

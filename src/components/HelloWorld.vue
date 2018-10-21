@@ -7,6 +7,7 @@
         <a href="/js-test.html">JsTest</a>
         <a href="/count-down.html">countDown</a>
         <a href="/copy.html">copy&paste</a>
+        <a href="/changeData.html">changeData</a>
     </div>
 </template>
 
