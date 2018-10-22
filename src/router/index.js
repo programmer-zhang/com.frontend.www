@@ -8,7 +8,7 @@ import jsTest from '@/views/jsTest.vue';
 import countDown from '@/views/countDown.vue';
 import copy from '@/views/copy.vue';
 import changeDatas from '@/views/changeDatas.vue';
-
+import cssTest from '@/views/cssTest.vue';
 
 Vue.use(Router)
 
@@ -54,6 +54,11 @@ export default new Router({
         path: '/changeDatas.html',
         name: 'changeDatas',
         component: changeDatas
-    }         
+    },
+    {
+        path: '/cssTest.html',
+        name: 'cssTest',
+        component: cssTest
+    }        
   ]
 })

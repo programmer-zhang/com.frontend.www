@@ -8,6 +8,7 @@
         <a href="/count-down.html">countDown</a>
         <a href="/copy.html">copy&paste</a>
         <a href="/changeDatas.html">changeDatas</a>
+        <a href="/cssTest.html">cssTest</a>
     </div>
 </template>
 
