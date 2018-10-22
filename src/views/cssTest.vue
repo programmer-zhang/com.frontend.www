@@ -1,8 +1,8 @@
 <template>
 	<div class="csstest">
 		<div class="border-image">
-			<div class="border-content border-round"></div>
-			<div class="border-content border-stretch"></div>
+			<div class="border-content border-round">在这里，图片铺满整个边框。</div>
+			<div class="border-content border-stretch">在这里，图片被拉伸以填充该区域。</div>
 		</div>
 	</div>
 </template>
@@ -29,6 +29,7 @@
 		.border-content {
 			height: 100px;
 			width: 800px;
+			line-height: 100px;
 			border: 30px solid transparent;
 		}
 		.border-round {
