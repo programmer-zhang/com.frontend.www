@@ -74,6 +74,7 @@
 		}
 	}
 	table {
+		margin: 0 auto;
 		tbody {
 
 		}
