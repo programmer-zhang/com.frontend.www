@@ -1,8 +1,8 @@
 <template>
     <div class="hello">
         <div class="hello-item">
+            <a href="/home.html">Home</a>
         </div>
-        <a href="/home.html">Home</a>
         <a href="/highLight.html">HighLight</a>
         <a href="/pure.html">Pure</a>
         <a href="/pure-model.html">PureModel</a>
