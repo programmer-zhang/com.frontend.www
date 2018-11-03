@@ -1,5 +1,7 @@
 <template>
     <div class="hello">
+        <div class="hello-item">
+        </div>
         <a href="/home.html">Home</a>
         <a href="/highLight.html">HighLight</a>
         <a href="/pure.html">Pure</a>
@@ -31,6 +33,11 @@ export default {
         height: 30px;
         line-height: 30px;
         margin: 0 auto;
+    }
+    .hello-item {
+        height: 200px;
+        width: 100px;
+        
     }
 }
 </style>
