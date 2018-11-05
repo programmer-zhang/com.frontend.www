@@ -2,7 +2,7 @@
 	<div class="whole-life">
 		<div class="logo-panel">
 			<div class="left-side"></div>
-			<div class="logo-content"></div>
+			<!-- <div class="logo-content"></div> -->
 			<div class="right-side"></div>
 		</div>
 	</div>
@@ -21,6 +21,7 @@
 </script>
 <style lang="scss">
 .whole-life {
+	overflow: hidden;
 	background-color: black;
 	.logo-panel {
 		position: relative;
@@ -38,6 +39,9 @@
 			height: 300px;
 			background-color: rgb(249,84,31);
 			border-radius: 50%;
+		}
+		.left-side, .right-side {
+			
 		}
 	}
 }
