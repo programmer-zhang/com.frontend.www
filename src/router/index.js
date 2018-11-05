@@ -9,6 +9,7 @@ import countDown from '@/views/countDown.vue';
 import copy from '@/views/copy.vue';
 import changeDatas from '@/views/changeDatas.vue';
 import cssTest from '@/views/cssTest.vue';
+import wholeLife from '@/views/wholeLife.vue';
 
 Vue.use(Router)
 
@@ -59,6 +60,11 @@ export default new Router({
         path: '/cssTest.html',
         name: 'cssTest',
         component: cssTest
+    },
+    {
+        path: '/wholeLife.html',
+        name: 'wholeLife',
+        component: wholeLife
     }        
   ]
 })
