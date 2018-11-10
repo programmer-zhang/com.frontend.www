@@ -41,6 +41,10 @@
 				<p>一个朝右的三jio</p>
 				<span></span>
 			</div>
+			<div class="circle">
+				<p>一个圆不拉几的圆</p>
+				<span></span>
+			</div>
 			<!-- <div class="left-triangle"></div> -->
 			<!-- <div class="left-triangle"></div> -->
 		</div>
@@ -166,7 +170,15 @@
 				border-left: 50px solid transparent;
 				border-top: 50px solid red;
 			}
-		}				
+		}	
+		.circle {
+			span {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: red;
+			}
+		}			
 	}
 }
 </style>
