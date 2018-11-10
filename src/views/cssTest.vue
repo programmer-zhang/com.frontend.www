@@ -4,6 +4,7 @@
 			<div class="border-content border-round">在这里，图片铺满整个边框。</div>
 			<div class="border-content border-stretch">在这里，图片被拉伸以填充该区域。</div>
 		</div>
+		<div class="css-border"></div>
 		<table>
 			<thead>
 				<tr>
@@ -18,6 +19,32 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="css-border"></div>
+		<div class="triangle-content">
+			<div class="square">
+				<p>一个正儿八经的正方形</p>
+				<span></span>
+			</div>
+			<div class="left-triangle">
+				<p>一个朝左的三jio</p>
+				<span></span>
+			</div>
+			<div class="top-triangle">
+				<p>一个朝上的三jio</p>
+				<span></span>
+			</div>
+			<div class="bottom-triangle">
+				<p>一个朝下的三jio</p>
+				<span></span>
+			</div>
+			<div class="right-triangle">
+				<p>一个朝右的三jio</p>
+				<span></span>
+			</div>
+			<!-- <div class="left-triangle"></div> -->
+			<!-- <div class="left-triangle"></div> -->
+		</div>
+
 	</div>
 </template>
 <script>
@@ -50,9 +77,12 @@
 </script>
 <style lang="scss">
 .csstest {
-	.border-image {
+	.css-border {
 		width: 100%;
 		border-bottom: 3px solid #000;
+	}
+	.border-image {
+		width: 100%;
 		.border-content {
 			height: 100px;
 			width: 800px;
@@ -83,6 +113,60 @@
 			text-align: left;
 			border: 1px solid #dfdfdf;
 		}
+	}
+	.triangle-content {
+		display: flex;
+		div {
+			width: 200px;
+			margin-left: 15px;
+			text-align: center;
+			span {
+				display: inline-block;
+			}
+		}
+		.square {
+			span {
+				width: 50px;
+				height: 50px;
+				background-color: red;
+			}
+		}
+		.left-triangle {
+			span {
+				width: 0;
+				height: 0;
+				border-top: 50px solid transparent;
+				border-bottom: 50px solid transparent;
+				border-right: 50px solid red;
+			}
+		}
+		.top-triangle {
+			span {
+				width: 0;
+				height: 0;
+				border-left: 50px solid transparent;
+				border-bottom: 50px solid red;
+				border-right: 50px solid transparent;
+			}
+		}	
+		.right-triangle {
+			span {
+				width: 0;
+				height: 0;
+				border-top: 50px solid transparent;
+				border-bottom: 50px solid transparent;
+				border-left: 50px solid red;
+			}
+		}	
+		.bottom-triangle {
+			span {
+				width: 0;
+				height: 0;
+				border-right: 50px solid transparent;
+				border-left: 50px solid transparent;
+				border-top: 50px solid red;
+			}
+		}				
 	}
 }
 </style>

@@ -4,7 +4,11 @@
 			<div class="center-side">
 				<div class="item-panel" v-for="(item, index) in 3"></div>
 			</div>
-			<div class="logo-content"></div>
+			<div class="logo-content">
+				<div class="top-mountain">
+
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -39,6 +43,9 @@
 			width: 200px;
 			height: 300px;
 			background-color: #fff;
+			.top-mountain {
+				margin-bottom: 20px;
+			}
 		}
 		.center-side {
 			position: absolute;
