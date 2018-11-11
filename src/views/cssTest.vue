@@ -45,8 +45,18 @@
 				<p>一个圆不拉几的圆</p>
 				<span></span>
 			</div>
-			<!-- <div class="left-triangle"></div> -->
-			<!-- <div class="left-triangle"></div> -->
+			<div class="left-top-circle">
+				<p>一个左上的圆</p>
+				<span></span>
+			</div>
+			<div class="right-top-circle">
+				<p>一个右上的圆</p>
+				<span></span>
+			</div>
+			<div class="right-bottom-circle">
+				<p>一个左下的圆</p>
+				<span></span>
+			</div>								
 		</div>
 
 	</div>
@@ -178,7 +188,31 @@
 				border-radius: 50%;
 				background-color: red;
 			}
-		}			
+		}
+		.left-top-circle {
+			span {
+				width: 50px;
+				height: 50px;
+				border-radius: 50px 0 0 0;
+				background-color: red;
+			}
+		}
+		.right-top-circle {
+			span {
+				width: 50px;
+				height: 50px;
+				border-radius: 0 50px 0 0;
+				background-color: red;
+			}
+		}
+		.right-bottom-circle {
+			span {
+				width: 50px;
+				height: 50px;
+				border-radius: 0 0 50px 0;
+				background-color: red;
+			}
+		}
 	}
 }
 </style>
