@@ -19,7 +19,7 @@ export default {
     },
     mounted() {
         // this.setTimer(this.timeOut);
-        this.compare();
+        this.compareVersion('1.2.3','1.3.1');
     },
     methods: {
     	filterFalse() {
@@ -71,7 +71,7 @@ export default {
             let barr = b.split('.');
             console.log(aarr)
             aarr.reduce((prev,next) => {
-                // console.log('prev', prev);
+                console.log('prev', prev);
                 console.log('next', next);
             })
             // var ps = [{'p':1,'num':1},{'p':2,'num':2},{'p':3,'num':3},{'p':4,'num':4}];
@@ -80,7 +80,50 @@ export default {
             //     console.log('nextValue', next)
             //     console.log( 'prev' + next.p*next.num );
             // },0)
-        } 
+        },
+        compareVersion(a,b){
+            let aList = a.split('.');
+            let bList = b.split('.');
+            if(aList.length !== bList.length){
+                return '版本号长度有误'
+            }
+            let length = aList.length;
+            let index = 0;
+            while(index < length){
+                if(aList[index] === bList[index]){
+                    index++;
+                }else{
+                    let aListIndex = parseInt(aList[index]);
+                    let bListIndex = parseInt(bList[index]);
+                    if(aListIndex === aListIndex && bListIndex === bListIndex) {
+                        // 证明数字字符串
+                        if (aList[index] > bList[index]) {
+                            return `${a}的版本号较大`
+                        } else if(aList[index] < bList[index]){
+                            return `${b}的版本号较大`
+                        }else{
+                            const length = aList[index].length;
+                            let aCode = aList[index].substring(length).charCodeAt();
+                            let bCode = aList[index].substring(length).charCodeAt();
+                            if (aCode > bCode) {
+                                return `${a}的版本号较大`
+                            } else {
+                                return `${b}的版本号较大`
+                            }
+                        }
+                    }else{
+                        let aListIndexCode = aList[index].charCodeAt();
+                        let bListIndexCode = bList[index].charCodeAt();
+                        if (aListIndexCode > bListIndexCode) {
+                            return `${a}的版本号较大`
+                        } else {
+                            return `${b}的版本号较大`
+                        }
+                    }
+                }
+            }
+            return '版本号相同'
+        }
     }
 }
 </script>
