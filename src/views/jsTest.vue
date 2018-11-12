@@ -18,7 +18,8 @@ export default {
         }
     },
     mounted() {
-        this.setTimer(this.timeOut);
+        // this.setTimer(this.timeOut);
+        this.compare();
     },
     methods: {
     	filterFalse() {
@@ -61,7 +62,25 @@ export default {
                i = "0" + i;    
             }    
            return i;    
-        }   
+        },
+        compare() {
+            let compareIndex = 0;
+            let a = '1.3.2.a3';
+            let b = '1.2.a3';
+            let aarr = a.split('.');
+            let barr = b.split('.');
+            console.log(aarr)
+            aarr.reduce((prev,next) => {
+                // console.log('prev', prev);
+                console.log('next', next);
+            })
+            // var ps = [{'p':1,'num':1},{'p':2,'num':2},{'p':3,'num':3},{'p':4,'num':4}];
+            // ps.reduce((prev,next)=>{
+            //     console.log('prevValue', prev)
+            //     console.log('nextValue', next)
+            //     console.log( 'prev' + next.p*next.num );
+            // },0)
+        } 
     }
 }
 </script>
