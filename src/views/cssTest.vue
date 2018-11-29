@@ -58,11 +58,16 @@
 				<span></span>
 			</div>								
 		</div>
-
+		<div class="css-border"></div>
+		<bottom-tip></bottom-tip>
 	</div>
 </template>
 <script>
+	import bottomTip from '../components/bottom-tip.vue';
 	export default {
+		components: {
+			bottomTip
+		},
 		data() {
 			return {
 				explainData: [{
