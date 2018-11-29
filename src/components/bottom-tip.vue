@@ -1,8 +1,8 @@
 <template>
 	<div class="bottom-tip">
-		<div class="recommand-float" ref="floatConetnt">
-			<div class="float-image" style="background-image: url(../../static/images/TSCBlogo.png)"></div>
-			<span class="float-triangle" @click="spread()"></span>
+		<div class="recommand-float" ref="floatConetnt" @click="spread()">
+			<div class="float-image" style="background-image: url(../../static/images/TSBJ.png)"></div>
+			<span class="float-triangle"></span>
 		</div>
 		<div class="recommand-content" ref="recommandContent">
 			<div class="container">
@@ -69,11 +69,14 @@
 		transition: left 0.5s ease-out;
 		.float-image {
 			position: absolute;
-			top: -50px;
-			width: 120px;
-			height: 140px;
+			top: 5px;
+			left: 10px;
+			width: 90px;
+			height: 90px;
+			border-radius: 50%;
+			background-color: #fff;
 			background-repeat: no-repeat;
-			background-size: cover;
+			background-size: contain;
 			background-position: center;
 		}
 		.float-triangle {
