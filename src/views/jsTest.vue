@@ -15,6 +15,9 @@ export default {
         return {
             timer:'',
             timeOut: '1830268800000',
+            specis: '',
+            name: '',
+            color: '',
         }
     },
     mounted() {
@@ -22,12 +25,14 @@ export default {
         this.compareVersion('1.2.3','1.3.1');
     },
     methods: {
+        //array迭代函数使用
     	filterFalse() {
     		let array = [3, 4, 5, 2, 3, undefined, null, 0, ""];
     		let returnData = array.filter(Boolean);
     		console.log(returnData);
     		return returnData;
     	},
+        //array迭代函数使用
     	addTen() {
     		let users = [
 			    { username: "Kelly", isVIP: true, balance: 20 },
@@ -39,6 +44,7 @@ export default {
 			);
 			console.log(returnData)
     	},
+        //倒计时
         setTimer(time) { 
             if (time < new Date().getTime()) {
                 return;
@@ -63,24 +69,7 @@ export default {
             }    
            return i;    
         },
-        compare() {
-            let compareIndex = 0;
-            let a = '1.3.2.a3';
-            let b = '1.2.a3';
-            let aarr = a.split('.');
-            let barr = b.split('.');
-            console.log(aarr)
-            aarr.reduce((prev,next) => {
-                console.log('prev', prev);
-                console.log('next', next);
-            })
-            // var ps = [{'p':1,'num':1},{'p':2,'num':2},{'p':3,'num':3},{'p':4,'num':4}];
-            // ps.reduce((prev,next)=>{
-            //     console.log('prevValue', prev)
-            //     console.log('nextValue', next)
-            //     console.log( 'prev' + next.p*next.num );
-            // },0)
-        },
+        //对比版本号的大小
         compareVersion(a,b){
             let aList = a.split('.');
             let bList = b.split('.');
@@ -123,7 +112,7 @@ export default {
                 }
             }
             return '版本号相同'
-        }
+        },
     }
 }
 </script>

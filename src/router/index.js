@@ -10,6 +10,7 @@ import copy from '@/views/copy.vue';
 import changeDatas from '@/views/changeDatas.vue';
 import cssTest from '@/views/cssTest.vue';
 import wholeLife from '@/views/wholeLife.vue';
+import extend from '@/views/extend.vue';
 
 Vue.use(Router)
 
@@ -65,6 +66,11 @@ export default new Router({
         path: '/wholeLife.html',
         name: 'wholeLife',
         component: wholeLife
-    }        
+    },
+    {
+        path: '/extend.html',
+        name: 'extend',
+        component: extend
+    }            
   ]
 })
