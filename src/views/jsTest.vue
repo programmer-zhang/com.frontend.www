@@ -113,6 +113,32 @@ export default {
             }
             return '版本号相同'
         },
+        //升降序排序
+        sortArray() {
+            let arr = [1,80,4,33,21,55];
+            arr.sort(function (x,y) {
+                //x-y是按照从小到大排序，y-x是按照从大到小排序
+                return x-y;
+            });
+            console.log(arr);
+        },
+        //根据对象数组的某个属性进行排序
+        sortObjectArray() {
+            let arr = [
+                {name:'zopp',age:0},
+                {name:'gpp',age:18},
+                {name:'yjj',age:8}
+            ];
+            arr.sort(compare('age'));
+            console.log(arr);
+        },
+        compare(property){
+            return function(a,b){
+                var value1 = a[property];
+                var value2 = b[property];
+                return value1 - value2;
+            }
+        }
     }
 }
 </script>
