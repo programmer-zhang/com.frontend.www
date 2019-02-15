@@ -11,6 +11,7 @@ import changeDatas from '@/views/changeDatas.vue';
 import cssTest from '@/views/cssTest.vue';
 import wholeLife from '@/views/wholeLife.vue';
 import extend from '@/views/extend.vue';
+import expendCard from '@/views/expendCard.vue';
 
 Vue.use(Router)
 
@@ -71,6 +72,11 @@ export default new Router({
         path: '/extend.html',
         name: 'extend',
         component: extend
-    }            
+    },
+    {
+        path: '/expendCard.html',
+        name: 'expendCard',
+        component: expendCard
+    }         
   ]
 })
