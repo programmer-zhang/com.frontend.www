@@ -23,6 +23,7 @@ export default {
     mounted() {
         // this.setTimer(this.timeOut);
         this.compareVersion('1.2.3','1.3.1');
+        this.extends();
     },
     methods: {
         //array迭代函数使用
@@ -138,6 +139,21 @@ export default {
                 var value2 = b[property];
                 return value1 - value2;
             }
+        },
+        //深拷贝与浅拷贝
+        extends(){
+            let obj = {
+                name: '张三',
+                age: 24,
+                data: [1,2,3,4,5]
+            } 
+            console.log('原始数据', obj);
+            // let newObj = obj;
+            let newObj = this.$baseTool.simpleClone(obj);
+            newObj.name = '李四';
+            console.log('newObj', newObj);
+            console.log('obj', obj);
+
         }
     }
 }
