@@ -23,7 +23,7 @@ export default {
     mounted() {
         // this.setTimer(this.timeOut);
         this.compareVersion('1.2.3','1.3.1');
-        this.extends();
+        // this.extends();
     },
     methods: {
         //array迭代函数使用
@@ -149,11 +149,11 @@ export default {
             } 
             console.log('原始数据', obj);
             // let newObj = obj;
-            let newObj = this.$baseTool.simpleClone(obj);
+            // let newObj = this.$baseTool.simpleClone(obj);
+            let newObj = this.$baseTool.deepCopy(obj);
             newObj.name = '李四';
             console.log('newObj', newObj);
             console.log('obj', obj);
-
         }
     }
 }

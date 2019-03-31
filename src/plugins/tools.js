@@ -13,6 +13,17 @@ var baseTool = {
         });
 
         return to;		
-	}
+	},
+	//todo: 传入的对象数组被赋值为对象了
+	deepCopy:function (obj) {
+	    if (typeof obj !== 'object') {
+	        return obj;
+	    }
+	    var newobj = {};
+	    for (var attr in obj) {
+	        newobj[attr] = baseTool.deepCopy(obj[attr]);
+	    }
+	    return newobj;
+	},
 }
 export default baseTool;
