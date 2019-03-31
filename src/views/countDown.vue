@@ -14,7 +14,7 @@ export default {
         		{ timeOut: '1830268800000' },
         		{ timeOut: '1840268800000' },
         		{ timeOut: '1850268800000' },
-        		{ timeOut: '1860268800000' },
+        		{ timeOut: '1860268800000' }
         	],
             timer:'',
         }
@@ -46,7 +46,6 @@ export default {
     }
 }
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .count-down {
     .time-out {
