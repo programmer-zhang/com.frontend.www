@@ -12,6 +12,7 @@ import cssTest from '@/views/cssTest.vue';
 import wholeLife from '@/views/wholeLife.vue';
 import extend from '@/views/extend.vue';
 import expendCard from '@/views/expendCard.vue';
+import VueQuillEditor from '@/views/vueQuillEditor.vue';
 
 Vue.use(Router)
 
@@ -77,6 +78,11 @@ export default new Router({
         path: '/expendCard.html',
         name: 'expendCard',
         component: expendCard
-    }         
+    },
+    {
+        path: '/quillEditor.html',
+        name: 'VueQuillEditor',
+        component: VueQuillEditor
+    },         
   ]
 })

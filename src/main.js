@@ -4,7 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VuePlugins from './plugins/index.js'
+import VueQuillEditor from 'vue-quill-editor'
 
+Vue.use(VueQuillEditor);
 Vue.use(VuePlugins);
 Vue.config.productionTip = false
 
