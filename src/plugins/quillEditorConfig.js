@@ -52,22 +52,25 @@ const handlers = {
                 // if (uploadConfig.token) {
                 //     formData.append('token', uploadConfig.token)
                 // }
-                console.log('传参',uploadConfig)
-                $axios.post(uploadConfig.action,{
-                    file: formData,
-                    platform: 'advertisement'
-                }).then(res => {
-                    console.log('上传res', res);
-                    if (res && res.data && res.data.code == 10000) {
-                        var res = JSON.parse(xhr.responseText);
-                        let length = self.quill.getSelection(true).index;
-                        //这里很重要，你图片上传成功后，img的src需要在这里添加，res.path就是你服务器返回的图片链接。            
-                        self.quill.insertEmbed(length, 'image', res.path);
-                        self.quill.setSelection(length + 1);       
+                const instance = $axios.create({
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type':'multipart/form-data'
                     }
-                    fileInput.value = '';
+                })
+                instance.post(uploadConfig.action, formData).then(res => {
+                    if (res && res.data && res.data.data.id) {
+                        let imgUrl = res.data.data.id
+                        console.log('图片链接', imgUrl)
+
+                        let length = self.quill.getSelection(true).index
+                        self.quill.insertEmbed(length, 'image', imgUrl)
+                        self.quill.setSelection(length + 1)       
+                    }
+                    fileInput.value = ''
                 }).catch(error => {
-                    console.log('图片上传失败');
+                    alert('图片上传失败,请重新上传')
+                    console.log('图片上传失败',error)
                 })
 
                 // // 图片上传

@@ -12,6 +12,7 @@
         <a href="/changeDatas.html">changeDatas</a>
         <a href="/cssTest.html">cssTest</a>
         <a href="/expendCard.html">expendCard</a>
+        <a href="/quillEditor.html">quillEditor</a>
     </div>
 </template>
 
