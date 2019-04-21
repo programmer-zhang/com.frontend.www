@@ -6,6 +6,7 @@
             <span>剩余时间为：</span>
             <span>{{timer}}</span>
         </div>
+        <div class="time-stay" @click="recordStayTime()">您在本网站已停留{{stayTime}}秒</div>
     </div>
 </template>
 
@@ -18,11 +19,14 @@ export default {
             specis: '',
             name: '',
             color: '',
+            stayTime: 0,
+            loginTime: new Date().getTime(),
+            logoutTime: new Date().getTime()+1000
         }
     },
     mounted() {
         // this.setTimer(this.timeOut);
-        this.compareVersion('1.2.3','1.3.1');
+        // this.compareVersion('1.2.3','1.3.1');
         // this.extends();
     },
     methods: {
@@ -154,6 +158,12 @@ export default {
             newObj.name = '李四';
             console.log('newObj', newObj);
             console.log('obj', obj);
+        },
+        //记录用户在网站的停留时间
+        recordStayTime() {
+            this.logoutTime = new Date().getTime();
+            this.stayTime = ((this.logoutTime-this.loginTime)/1000).toFixed(2)
+            console.log(this.stayTime);
         }
     }
 }
