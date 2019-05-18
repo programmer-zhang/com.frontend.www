@@ -13,6 +13,7 @@ import wholeLife from '@/views/wholeLife.vue';
 import extend from '@/views/extend.vue';
 import expendCard from '@/views/expendCard.vue';
 import VueQuillEditor from '@/views/vueQuillEditor.vue';
+import Wechat from '@/views/wechat.vue';
 
 Vue.use(Router)
 
@@ -81,8 +82,13 @@ export default new Router({
     },
     {
         path: '/quillEditor.html',
-        name: 'VueQuillEditor',
+        name: 'vueQuillEditor',
         component: VueQuillEditor
-    },         
+    },
+    {
+        path: '/wechat.html',
+        name: 'wechat',
+        component: Wechat
+    },             
   ]
 })
