@@ -1,6 +1,6 @@
 <template>
 	<div class="wechat-content">
-		<img src="static/images/qrCode.png">
+		<!-- <img src="static/images/qrCode.png"> -->
 		<button @click="showQrcode()">生成二维码</button>
 		<div id="qrcode"></div>
 	</div>
@@ -28,7 +28,6 @@
 					// correctLevel : QRCode.CorrectLevel.H
 				});
 				qrcode.makeCode("https://www.qingyidai.com?did=123456&id=123&userid=456")
-				console.log(qrcode)
 				var canvas=document.getElementsByTagName('canvas')[0];
 			    var img = this.convertCanvasToImage(canvas);
 			    console.log(canvas)
@@ -43,7 +42,7 @@
 			    }
 			    return new Blob([u8arr], {type:mime});
 			},
-			convertCanvasToImage(canvas) {  
+			convertCanvasToImage(canvas) {
 				//新建Image对象
 				var image = new Image();  
 				// canvas.toDataURL 返回的是一串Base64编码的URL
@@ -75,10 +74,10 @@
 <style lang="scss">
 .wechat-content {
 	canvas {
-		display: block!important;
+		/*display: block!important;*/
 	}
 	img {
-		display: none!important;
+		/*display: none!important;*/
 	}
 }
 </style>
