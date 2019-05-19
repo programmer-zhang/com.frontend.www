@@ -2,7 +2,13 @@
 	<div class="wechat-content">
 		<!-- <img src="static/images/qrCode.png"> -->
 		<button @click="showQrcode()">生成二维码</button>
-		<div id="qrcode"></div>
+		<div class="show-qrcode-panel" v-show="showImg">
+			<div class="mask"></div>
+			<span class="close-btn" @click="closeQrcode()">X</span>
+			<div class="qrcode-panel" id="qrcode">
+				<span class="qrcode-info">长按识别图中的二维码</span>
+			</div>
+		</div>
 	</div>
 </template>
 <script>
@@ -10,7 +16,7 @@
 	export default {
 		data() {
 			return {
-
+				showImg:false,
 			}
 		},
 		mounted() {
@@ -18,8 +24,9 @@
 		},
 		methods: {
 			showQrcode() {
+				this.showImg = true;
 				var qrcode = new QRCode(document.getElementById("qrcode"), {
-					text: "https://www.qingyidai.com",
+					text: "https://www.qingyidai.com?did=123456&id=123&userid=456",
 					width: 160,
 					height: 160,
 					render: 'canvas',
@@ -27,12 +34,16 @@
 					// colorLight : "#ffffff",
 					// correctLevel : QRCode.CorrectLevel.H
 				});
-				qrcode.makeCode("https://www.qingyidai.com?did=123456&id=123&userid=456")
-				var canvas=document.getElementsByTagName('canvas')[0];
+				// qrcode.makeCode("https://www.qingyidai.com?did=123456&id=123&userid=456")
+				var canvas = document.getElementsByTagName('canvas')[0];
 			    var img = this.convertCanvasToImage(canvas);
 			    console.log(canvas)
 			    console.log(img)
 			    document.getElementById("qrcode").append(img);
+			},
+			closeQrcode() {
+				//先清除图片
+				this.showImg = false;
 			},
 			dataURLtoBlob(dataurl) {
 			    let arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
@@ -44,9 +55,10 @@
 			},
 			convertCanvasToImage(canvas) {
 				//新建Image对象
-				var image = new Image();  
+				var image = new Image();
 				// canvas.toDataURL 返回的是一串Base64编码的URL
-				image.src = canvas.toDataURL("image/png");  
+				image.src = canvas.toDataURL("image/png");
+				image.id = 'qrcodeImg';
 				return image;  
 		    },
 		    utf16to8(str) {
@@ -73,11 +85,63 @@
 </script>
 <style lang="scss">
 .wechat-content {
-	canvas {
-		/*display: block!important;*/
+	width: 100%;
+	height: 100%;
+	#qrcodeImg {
+		z-index: 10;
 	}
-	img {
-		/*display: none!important;*/
-	}
+	.show-qrcode-panel {
+		position: relative;
+		top: 50px;
+		.mask {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0, .5);
+		}
+		.close-btn {
+			position: absolute;
+			top: -50px;
+			right: 20px;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			border-radius: 50%;
+			color: #000;
+			font-weight: bold;
+			font-size: 20px;
+			background-color: #fff;
+		}
+		.qrcode-panel {
+			position: relative;
+			width: 70%;
+			height: 300px;
+			background-color: #fff;
+			margin: 0 auto;
+			margin-top: 50px;
+			padding-top: 80px;
+			box-sizing: border-box;
+			border-radius: 5px;
+			.qrcode-info {
+				position: absolute;
+				top: 20px;
+				left: 50%;
+				display: block;
+				margin-left: -80px;
+				height: 30px;
+				line-height: 30px;
+				font-weight: bold;
+				color: #333;
+			}
+			img {
+				position: absolute;
+				top: 80px;
+				left: 50%;
+				margin-left: -80px;
+			}
+		}
+	}	
 }
 </style>
