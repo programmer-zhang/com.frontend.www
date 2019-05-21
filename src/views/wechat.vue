@@ -34,15 +34,19 @@
 					// colorLight : "#ffffff",
 					// correctLevel : QRCode.CorrectLevel.H
 				});
-				// qrcode.makeCode("https://www.qingyidai.com?did=123456&id=123&userid=456")
-				var canvas = document.getElementsByTagName('canvas')[0];
-			    var img = this.convertCanvasToImage(canvas);
-			    console.log(canvas)
-			    console.log(img)
+				// QRCode.makeCode("https://www.qingyidai.com?did=123456&id=123&userid=456")
+				let canvas = document.getElementsByTagName('canvas')[0];
+			    let img = this.convertCanvasToImage(canvas);
 			    document.getElementById("qrcode").append(img);
 			},
 			closeQrcode() {
 				//先清除图片
+				let canvas = document.getElementsByTagName('canvas')[0]; 
+				let image = document.getElementsByTagName('img');
+				canvas.parentNode.removeChild(canvas)
+				for(let item of image) {
+					item.parentNode.removeChild(item)
+				}
 				this.showImg = false;
 			},
 			dataURLtoBlob(dataurl) {
@@ -87,6 +91,19 @@
 .wechat-content {
 	width: 100%;
 	height: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+	button {
+		width: 100%;
+		height: 30px;
+		line-height: 30px;
+		background-color: #11EEEE;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		font-size: 14px;
+		font-weight: bold;
+	}
 	#qrcodeImg {
 		z-index: 10;
 	}

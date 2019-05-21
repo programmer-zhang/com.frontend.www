@@ -13,6 +13,7 @@
         <a href="/cssTest.html">cssTest</a>
         <a href="/expendCard.html">expendCard</a>
         <a href="/quillEditor.html">quillEditor</a>
+        <a href="/wechat.html">wechatQrCode</a>
     </div>
 </template>
 
