@@ -1,6 +1,8 @@
 <template>
 	<div class="wechat-content">
 		<!-- <img src="static/images/qrCode.png"> -->
+		<label class="qrcode-label">二维码内容:</label>
+		<input type="text" class="qrcode-input" v-model="qrcodeInfo">
 		<button @click="showQrcode()">生成二维码</button>
 		<div class="show-qrcode-panel" v-show="showImg">
 			<div class="mask"></div>
@@ -17,6 +19,7 @@
 		data() {
 			return {
 				showImg:false,
+				qrcodeInfo: ''
 			}
 		},
 		mounted() {
@@ -26,7 +29,7 @@
 			showQrcode() {
 				this.showImg = true;
 				var qrcode = new QRCode(document.getElementById("qrcode"), {
-					text: "https://www.qingyidai.com?did=123456&id=123&userid=456",
+					text: this.qrcodeInfo,
 					width: 160,
 					height: 160,
 					render: 'canvas',
@@ -34,7 +37,7 @@
 					// colorLight : "#ffffff",
 					// correctLevel : QRCode.CorrectLevel.H
 				});
-				// QRCode.makeCode("https://www.qingyidai.com?did=123456&id=123&userid=456")
+				// QRCode.makeCode("https://www.xxx.com?did=123456&id=123&userid=456")
 				let canvas = document.getElementsByTagName('canvas')[0];
 			    let img = this.convertCanvasToImage(canvas);
 			    document.getElementById("qrcode").append(img);
@@ -93,10 +96,24 @@
 	height: 100%;
 	padding: 20px;
 	box-sizing: border-box;
+	.qrcode-label {
+		margin-right: 10px;
+		font-size: 16px;
+		color: #333;
+	}
+	.qrcode-input {
+		height: 30px;
+		line-height: 20px;
+		padding: 10px;
+		box-sizing: border-box;
+		border: 1px solid #e8e8e8;
+		border-radius: 5px;
+	}
 	button {
 		width: 100%;
 		height: 30px;
 		line-height: 30px;
+		margin-top: 20px;
 		background-color: #11EEEE;
 		border-radius: 5px;
 		border: none;
@@ -108,8 +125,10 @@
 		z-index: 10;
 	}
 	.show-qrcode-panel {
-		position: relative;
+		position: fixed;
 		top: 50px;
+		left: 0;
+		width: 100%;
 		.mask {
 			position: fixed;
 			top: 0;
@@ -120,7 +139,6 @@
 		}
 		.close-btn {
 			position: absolute;
-			top: -50px;
 			right: 20px;
 			width: 30px;
 			height: 30px;
@@ -132,13 +150,14 @@
 			background-color: #fff;
 		}
 		.qrcode-panel {
-			position: relative;
-			width: 70%;
+			position: absolute;
+			left: 50%;
+			width: 250px;
 			height: 300px;
-			background-color: #fff;
-			margin: 0 auto;
+			margin-left: -125px;
 			margin-top: 50px;
 			padding-top: 80px;
+			background-color: #fff;
 			box-sizing: border-box;
 			border-radius: 5px;
 			.qrcode-info {
