@@ -11,10 +11,14 @@
 				<span class="qrcode-info">长按识别图中的二维码</span>
 			</div>
 		</div>
+		<div class="html2canvas-conetent">
+			
+		</div>
 	</div>
 </template>
 <script>
 	// import qrCode from 'qrcodejs2'
+	import html2canvas from 'html2canvas'
 	export default {
 		data() {
 			return {
@@ -52,14 +56,6 @@
 				}
 				this.showImg = false;
 			},
-			dataURLtoBlob(dataurl) {
-			    let arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-			        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-			    while(n--){
-			        u8arr[n] = bstr.charCodeAt(n);
-			    }
-			    return new Blob([u8arr], {type:mime});
-			},
 			convertCanvasToImage(canvas) {
 				//新建Image对象
 				var image = new Image();
@@ -68,6 +64,14 @@
 				image.id = 'qrcodeImg';
 				return image;  
 		    },
+			dataURLtoBlob(dataurl) {
+			    let arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+			        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+			    while(n--){
+			        u8arr[n] = bstr.charCodeAt(n);
+			    }
+			    return new Blob([u8arr], {type:mime});
+			},
 		    utf16to8(str) {
 		        var out, i, len, c;
 		        out = "";
