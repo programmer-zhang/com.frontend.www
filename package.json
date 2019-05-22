@@ -11,10 +11,11 @@
     "pm2": "pm2 start process/test.js"
   },
   "dependencies": {
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
+    "axios": "^0.16.2",
     "es6-promise": "^4.0.5",
-    "axios": "^0.16.2"
+    "html2canvas": "^1.0.0-rc.1",
+    "vue": "^2.5.2",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
