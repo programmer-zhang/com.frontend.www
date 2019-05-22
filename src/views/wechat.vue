@@ -11,8 +11,21 @@
 				<span class="qrcode-info">长按识别图中的二维码</span>
 			</div>
 		</div>
-		<div class="html2canvas-conetent">
-			
+		<div class="canvas-content">
+			<label>生成canvas区域</label>
+			<div class="html2canvas-conetent" ref="canvasContent">
+				<img src="/static/images/canvas.jpg">
+				<span>测试Title</span>
+			</div>
+			<button @click="showCanvas()">生成canvas图片</button>
+		</div>
+		<div class="show-canvas-panel" v-if="showCanvasImg">
+			<div class="mask"></div>
+			<span class="close-btn" @click="closeCanvas()">X</span>
+			<div class="canvas-panel">
+				<span>长按保存图片</span>
+				<img :src="imgUrl" v-if="showCanvasImg">
+			</div>
 		</div>
 	</div>
 </template>
@@ -23,7 +36,9 @@
 		data() {
 			return {
 				showImg:false,
-				qrcodeInfo: ''
+				qrcodeInfo: '',
+				imgUrl: '',
+				showCanvasImg: false
 			}
 		},
 		mounted() {
@@ -63,6 +78,16 @@
 				image.src = canvas.toDataURL("image/png");
 				image.id = 'qrcodeImg';
 				return image;  
+		    },
+		    showCanvas() {
+		    	let self = this;
+				html2canvas(self.$refs.canvasContent).then(function(canvas) {
+	                self.imgUrl = canvas.toDataURL();
+	                self.showCanvasImg = true;
+				});
+		    },
+		    closeCanvas() {
+		    	this.showCanvasImg = false
 		    },
 			dataURLtoBlob(dataurl) {
 			    let arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
@@ -182,6 +207,67 @@
 				margin-left: -80px;
 			}
 		}
+	}
+	.canvas-content {
+		margin-top: 30px;
+	}
+	.html2canvas-conetent {
+		position: relative;
+		margin-top: 30px;
+		span {
+			display: inline-block;
+			position: absolute;
+			top: 10px;
+			left: 80px;
+			color: #fff;
+			font-weight: bold;
+			font-size: 16px;
+		}
+		img {
+			display: inline-block;
+			width: 70%;
+		}
+	}
+	.show-canvas-panel {
+		position: fixed;
+		top: 50px;
+		left: 0;
+		width: 100%;
+		.canvas-panel {
+			position: absolute;
+			top: 50px;
+			left: 50%;
+			margin-left: -45%;
+			width: 90%;
+			padding: 20px;
+			box-sizing: border-box;
+			background-color: #fff;
+			border-radius: 5px;
+			img {
+				width: 80%;
+			}
+		}
+		.mask {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0, .5);
+		}
+		.close-btn {
+			position: absolute;
+			right: 20px;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			border-radius: 50%;
+			color: #000;
+			font-weight: bold;
+			font-size: 20px;
+			background-color: #fff;
+		}
+
 	}	
 }
 </style>
