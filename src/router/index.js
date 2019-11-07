@@ -14,6 +14,7 @@ import Extend from '@/views/extend.vue';
 import ExpendCard from '@/views/expendCard.vue';
 import VueQuillEditor from '@/views/vueQuillEditor.vue';
 import Wechat from '@/views/wechat.vue';
+import CssTestPhone from '@/views/cssTestPhone.vue'
 
 Vue.use(Router)
 
@@ -64,6 +65,11 @@ export default new Router({
         path: '/cssTest.html',
         name: 'CssTest',
         component: CssTest
+    },
+    {
+        path: '/cssTestPhone.html',
+        name: 'CssTestPhone',
+        component: CssTestPhone
     },
     {
         path: '/wholeLife.html',

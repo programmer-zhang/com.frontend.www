@@ -48,6 +48,10 @@ export default {
                 text: 'CssTest'
             },
             {
+                href: '/cssTestPhone.html',
+                text: 'CssTestPhone'
+            },
+            {
                 href: '/expendCard.html',
                 text: 'ExpendCard'
             },
