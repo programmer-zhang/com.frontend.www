@@ -3,15 +3,15 @@ import Router from 'vue-router';
 import HelloWorld from '@/components/HelloWorld';
 import HighLight from '@/views/highLight.vue';
 import Pure from '@/test/pure.vue';
-import pureModel from '@/test/pure-model.vue';
-import jsTest from '@/views/jsTest.vue';
-import countDown from '@/views/countDown.vue';
-import copy from '@/views/copy.vue';
-import changeDatas from '@/views/changeDatas.vue';
-import cssTest from '@/views/cssTest.vue';
-import wholeLife from '@/views/wholeLife.vue';
-import extend from '@/views/extend.vue';
-import expendCard from '@/views/expendCard.vue';
+import PureModel from '@/test/pure-model.vue';
+import JsTest from '@/views/jsTest.vue';
+import CountDown from '@/views/countDown.vue';
+import Copy from '@/views/copy.vue';
+import ChangeDatas from '@/views/changeDatas.vue';
+import CssTest from '@/views/cssTest.vue';
+import WholeLife from '@/views/wholeLife.vue';
+import Extend from '@/views/extend.vue';
+import ExpendCard from '@/views/expendCard.vue';
 import VueQuillEditor from '@/views/vueQuillEditor.vue';
 import Wechat from '@/views/wechat.vue';
 
@@ -36,58 +36,58 @@ export default new Router({
         component: Pure
     },
     {
-        path: '/pure-model.html',
-        name: 'pureModel',
-        component: pureModel
+        path: '/pureModel.html',
+        name: 'PureModel',
+        component: PureModel
     },
     {
-        path: '/js-test.html',
-        name: 'jsTest',
-        component: jsTest
+        path: '/jsTest.html',
+        name: 'JsTest',
+        component: JsTest
     },
     {
-        path: '/count-down.html',
-        name: 'countDown',
-        component: countDown        
+        path: '/countDown.html',
+        name: 'CountDown',
+        component: CountDown        
     },
     {
         path: '/copy.html',
-        name: 'copy',
-        component: copy        
+        name: 'Copy',
+        component: Copy        
     },
     {
         path: '/changeDatas.html',
-        name: 'changeDatas',
-        component: changeDatas
+        name: 'ChangeDatas',
+        component: ChangeDatas
     },
     {
         path: '/cssTest.html',
-        name: 'cssTest',
-        component: cssTest
+        name: 'CssTest',
+        component: CssTest
     },
     {
         path: '/wholeLife.html',
-        name: 'wholeLife',
-        component: wholeLife
+        name: 'WholeLife',
+        component: WholeLife
     },
     {
         path: '/extend.html',
-        name: 'extend',
-        component: extend
+        name: 'Extend',
+        component: Extend
     },
     {
         path: '/expendCard.html',
-        name: 'expendCard',
-        component: expendCard
+        name: 'ExpendCard',
+        component: ExpendCard
     },
     {
         path: '/quillEditor.html',
-        name: 'vueQuillEditor',
+        name: 'VueQuillEditor',
         component: VueQuillEditor
     },
     {
         path: '/wechat.html',
-        name: 'wechat',
+        name: 'Wechat',
         component: Wechat
     },             
   ]
