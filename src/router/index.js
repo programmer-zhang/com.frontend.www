@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import HelloWorld from '@/components/HelloWorld';
+// import Home from '@/test/confirm.vue';
 import HighLight from '@/views/highLight.vue';
 import Pure from '@/test/pure.vue';
 import PureModel from '@/test/pure-model.vue';
@@ -23,6 +24,11 @@ export default new Router({
   routes: [
     {
         path: '/',
+        name: 'HelloWorld',
+        component: HelloWorld
+    },
+    {
+        path: '/home.html',
         name: 'HelloWorld',
         component: HelloWorld
     },
