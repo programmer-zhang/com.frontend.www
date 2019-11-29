@@ -63,6 +63,10 @@ export default {
                 href: '/wechat.html',
                 text: 'WechatQrCode'
             },
+            {
+                href: '/tree.html',
+                text: 'iView Tree'
+            }
             ]
         }
     }

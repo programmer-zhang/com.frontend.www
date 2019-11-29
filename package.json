@@ -15,7 +15,8 @@
     "es6-promise": "^4.0.5",
     "html2canvas": "^1.0.0-rc.1",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "iview": "^3.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

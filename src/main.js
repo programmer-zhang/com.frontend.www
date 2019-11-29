@@ -5,10 +5,13 @@ import App from './App'
 import router from './router'
 import VuePlugins from './plugins/index.js'
 import VueQuillEditor from 'vue-quill-editor'
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
 
 Vue.use(VueQuillEditor);
 Vue.use(VuePlugins);
 Vue.config.productionTip = false
+Vue.use(iView)
 
 /* eslint-disable no-new */
 new Vue({

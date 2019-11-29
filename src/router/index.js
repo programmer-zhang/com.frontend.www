@@ -15,7 +15,8 @@ import Extend from '@/views/extend.vue';
 import ExpendCard from '@/views/expendCard.vue';
 import VueQuillEditor from '@/views/vueQuillEditor.vue';
 import Wechat from '@/views/wechat.vue';
-import CssTestPhone from '@/views/cssTestPhone.vue'
+import CssTestPhone from '@/views/cssTestPhone.vue';
+import Tree from '@/views/tree.vue';
 
 Vue.use(Router)
 
@@ -101,6 +102,11 @@ export default new Router({
         path: '/wechat.html',
         name: 'Wechat',
         component: Wechat
-    },             
+    },
+    {
+        path: '/tree.html',
+        name: 'Tree',
+        component: Tree
+    },            
   ]
 })
