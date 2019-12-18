@@ -36,6 +36,10 @@ export default {
                 text: 'CountDown'
             },
             {
+                href: 'extend.html',
+                text: 'Extend'
+            },
+            {
                 href: '/copy.html',
                 text: 'Copy & Paste'
             },
