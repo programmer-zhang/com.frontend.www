@@ -67,7 +67,7 @@
     }
 
     SuperType.prototype.sayName = function() {
-        alert(this.name);
+        console.log(this.name);
     }
 
     function SubType(name, age) {
@@ -80,17 +80,17 @@
     SubType.prototype = new SuperType();
     SubType.prototype.constructor = SubType;
     SubType.prototype.sayAge = function() {
-        alert(this.age);
+        console.log(this.age);
     };
 
     let instance3 = new SubType("Nicholas", 29);
     instance3.colors.push("black");
-    alert(instance3.colors); //"red,blue,green,black"
+    console.log(instance3.colors); //"red,blue,green,black"
     instance3.sayName(); //"Nicholas";
     instance3.sayAge(); //29
 
     let instance4 = new SubType("Greg", 27);
-    alert(instance4.colors); //"red,blue,green"
+    console.log(instance4.colors); //"red,blue,green"
     instance4.sayName(); //"Greg";
     instance4.sayAge(); //27 
 
