@@ -17,6 +17,7 @@ import VueQuillEditor from '@/views/vueQuillEditor.vue';
 import Wechat from '@/views/wechat.vue';
 import CssTestPhone from '@/views/cssTestPhone.vue';
 import Tree from '@/views/tree.vue';
+import Currying from '@/views/currying.vue';
 
 Vue.use(Router)
 
@@ -107,6 +108,11 @@ export default new Router({
         path: '/tree.html',
         name: 'Tree',
         component: Tree
-    },            
+    }, 
+    {
+        path: '/currying.html',
+        name: 'Currying',
+        component: Currying
+    }           
   ]
 })

@@ -70,6 +70,10 @@ export default {
             {
                 href: '/tree.html',
                 text: 'iView Tree'
+            },
+            {
+                href: '/currying.html',
+                text: 'bind/call/apply/Currying'
             }
             ]
         }
