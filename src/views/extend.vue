@@ -2,6 +2,7 @@
     <div style="text-align: center; font-weight: bold;font-size: 20px;">JS实现继承</div>
 </template>
 <script>
+    console.log('-------继承-------')
     //继承 原始函数
    //  function Animal() {
    //      var specis = '动物';
@@ -94,7 +95,7 @@
     instance4.sayName(); //"Greg";
     instance4.sayAge(); //27 
 
-
+    console.log('-------继承-------')
 </script>
 
 

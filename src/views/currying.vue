@@ -2,6 +2,70 @@
   <div>bind/call/apply/函数柯里化</div>
 </template>
 <script>
+/** 
+  1. bind/call/apply都是用来改变this的指向
+  2. bind和call传入的都是一个参数列表，而apply传入的是一个包含若干参数的数组，只是bind会返回一个新函数
+    fun.call(obj, 'newObj', 'newObj2', 'newObj3')
+
+    fun.apply(obj, ['newObj', 'newObj2', 'newObj3'])
+
+    let newFun = fun.call(obj, 'newObj', 'newObj2', 'newObj3')
+    newFun()
+    */
+  // 3. 实现一个bind/call/apply函数
+  // 思路
+  // 1）.不传入第一个参数，那么默认为 window
+  // 2）.改变了 this 指向，让新的对象可以执行该函数。那么思路是否可以变成给新的对象添加一个函数，然后在执行完以后删除
+
+  Function.prototype.myBind = function (context) {
+    if (typeof this !== 'function') {
+      throw new TypeError('Error')
+    }
+    let _this = this
+    let args = [...arguments].slice(1)
+    // 返回一个函数
+    return function F() {
+      // 因为返回了一个函数，我们可以 new F()，所以需要判断
+      if (this instanceof F) {
+        return new _this(...args, ...arguments)
+      }
+      return _this.apply(context, args.concat(...arguments))
+    }
+  }
+
+  Function.prototype.myCall = function (context) {
+    var context = context || window
+    // 给 context 添加一个属性
+    // getValue.call(a, 'yck', '24') => a.fn = getValue
+    context.fn = this
+    // 将 context 后面的参数取出来
+    var args = [...arguments].slice(1)
+    // getValue.call(a, 'yck', '24') => a.fn('yck', '24')
+    var result = context.fn(...args)
+    // 删除 fn
+    delete context.fn
+    return result
+  }
+
+  Function.prototype.myApply = function (context) {
+    var context = context || window
+    context.fn = this
+
+    var result
+    // 需要判断是否存储第二个参数
+    // 如果存在，就将第二个参数展开
+    if (arguments[1]) {
+      result = context.fn(...arguments[1])
+    } else {
+      result = context.fn()
+    }
+
+    delete context.fn
+    return result
+  }
+
+
+
   console.log('------柯里化------')
   // 函数柯里化作用
   // 1. 参数复用
