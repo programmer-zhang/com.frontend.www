@@ -59,6 +59,9 @@
 			</div>								
 		</div>
 		<div class="css-border"></div>
+		<div class="css-position">
+			<div class="child"></div>
+		</div>
 		<bottom-tip></bottom-tip>
 	</div>
 </template>
@@ -96,6 +99,23 @@
 </script>
 <style lang="scss">
 .csstest {
+	.css-position {
+		position: relative;
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		margin: 50px;
+		padding: 10px;
+		border: 10px solid black;
+		.child {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50px;
+			height: 50px;
+			background-color: blue;
+		}
+	}
 	.css-border {
 		width: 100%;
 		border-bottom: 3px solid #000;
