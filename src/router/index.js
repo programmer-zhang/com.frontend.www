@@ -18,6 +18,7 @@ import Wechat from '@/views/wechat.vue';
 import CssTestPhone from '@/views/cssTestPhone.vue';
 import Tree from '@/views/tree.vue';
 import Currying from '@/views/currying.vue';
+import Proxy from '@/views/proxy.vue';
 
 Vue.use(Router)
 
@@ -26,11 +27,6 @@ export default new Router({
   routes: [
     {
         path: '/',
-        name: 'HelloWorld',
-        component: HelloWorld
-    },
-    {
-        path: '/home.html',
         name: 'HelloWorld',
         component: HelloWorld
     },
@@ -62,7 +58,8 @@ export default new Router({
     {
         path: '/copy.html',
         name: 'Copy',
-        component: Copy        
+        component: Copy,
+        showInfo: 'Copy & Paste'        
     },
     {
         path: '/changeDatas.html',
@@ -102,17 +99,26 @@ export default new Router({
     {
         path: '/wechat.html',
         name: 'Wechat',
-        component: Wechat
+        component: Wechat,
+        showInfo: 'WechatQrCode'
     },
     {
         path: '/tree.html',
         name: 'Tree',
-        component: Tree
+        component: Tree,
+        showInfo: '用 iView 实现 Tree'
     }, 
     {
         path: '/currying.html',
         name: 'Currying',
-        component: Currying
-    }           
+        component: Currying,
+        showInfo: '手动实现 bind/call/apply/Currying'
+    }, 
+    {
+        path: '/proxy.html',
+        name: 'Proxy',
+        component: Proxy,
+        showInfo: 'Proxy 的使用'
+    }
   ]
 })

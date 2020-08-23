@@ -2,6 +2,7 @@
   <div>bind/call/apply/函数柯里化</div>
 </template>
 <script>
+  export default {}
 /** 
   1. bind/call/apply都是用来改变this的指向
   2. bind和call传入的都是一个参数列表，而apply传入的是一个包含若干参数的数组，只是bind会返回一个新函数
@@ -220,9 +221,9 @@
     return fn;
   }
 
-  console.log(answer(1,2,3,4))
-  console.log(answer(1)(2)(3)(4))
-  console.log(answer(1,2,3)(4))
+  // console.log(answer(1,2,3,4))
+  // console.log(answer(1)(2)(3)(4))
+  // console.log(answer(1,2,3)(4))
 
 
   console.log('------柯里化------')
