@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import HelloWorld from '@/components/HelloWorld';
-// import Home from '@/test/confirm.vue';
 import HighLight from '@/views/highLight.vue';
 import Pure from '@/test/pure.vue';
 import PureModel from '@/test/pure-model.vue';
@@ -11,13 +10,13 @@ import Copy from '@/views/copy.vue';
 import ChangeDatas from '@/views/changeDatas.vue';
 import CssTest from '@/views/cssTest.vue';
 import WholeLife from '@/views/wholeLife.vue';
-import Extend from '@/views/extend.vue';
+// import Extend from '@/views/extend.vue';
 import ExpendCard from '@/views/expendCard.vue';
 import VueQuillEditor from '@/views/vueQuillEditor.vue';
 import Wechat from '@/views/wechat.vue';
 import CssTestPhone from '@/views/cssTestPhone.vue';
 import Tree from '@/views/tree.vue';
-import Currying from '@/views/currying.vue';
+// import Currying from '@/views/currying.vue';
 import Proxy from '@/views/proxy.vue';
 
 Vue.use(Router)
@@ -81,11 +80,11 @@ export default new Router({
         name: 'WholeLife',
         component: WholeLife
     },
-    {
-        path: '/extend.html',
-        name: 'Extend',
-        component: Extend
-    },
+    // {
+    //     path: '/extend.html',
+    //     name: 'Extend',
+    //     component: Extend
+    // },
     {
         path: '/expendCard.html',
         name: 'ExpendCard',
@@ -107,13 +106,13 @@ export default new Router({
         name: 'Tree',
         component: Tree,
         showInfo: '用 iView 实现 Tree'
-    }, 
-    {
-        path: '/currying.html',
-        name: 'Currying',
-        component: Currying,
-        showInfo: '手动实现 bind/call/apply/Currying'
-    }, 
+    },
+    // {
+    //     path: '/currying.html',
+    //     name: 'Currying',
+    //     component: Currying,
+    //     showInfo: '手动实现 bind/call/apply/Currying'
+    // },
     {
         path: '/proxy.html',
         name: 'Proxy',
