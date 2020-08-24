@@ -102,7 +102,7 @@
     //     set: function(target, prop, value) {
     //         if (!ValidatorUtil[prop](value)) {
     //             target[prop] = value;
-    //         }            
+    //         }
     //     },
     // });
 
