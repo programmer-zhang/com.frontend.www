@@ -166,7 +166,7 @@
     /**
     * 四: Proxy & Object.defineProperty
     * 1. Object.defineProperty 无法一次性监听对象所有属性，必须遍历或者递归来实现
-    * 2. Object.defineProperty 无法监听新增加的属性
+    * 2. Object.defineProperty 无法监听新增加的属性，需要监听的话使用this.$set()重新设置添加属性
     */
     // let boy = {
     //     name: 'Jackson',
@@ -192,20 +192,130 @@
     //     name: 'Rose',
     //     age: 22
     // }
-    // Object.keys(girl).forEach(key => {
-    //     console.log(key)
-    //     Object.defineProperty(girl, key, {
-    //         set: function(value) {
-    //             girl[key] = value;
+    // observe(girl);
+    // function observe(data) {
+    //     if (!data || typeof data !== 'object') {
+    //         return;
+    //     }
+    //     // 取出所有属性遍历
+    //     Object.keys(data).forEach(function(key) {
+    //         defineReactive(data, key, data[key]);
+    //     });
+    // };
+    // function defineReactive(data, key, val) {
+    //     Object.defineProperty(data, key, {
+    //         enumerable: true,
+    //         configurable: false,
+    //         set: function(newVal) {
+    //             console.log('监听到值的变化');
+    //             val = newVal;
     //         },
-    //         get: function(target, key) {
-    //             return girl[key] + '&defineProperty';
+    //         get: function() {
+    //             return val + '&defineProperty';
     //         }
     //     })
-    // })
+    // }
 
+    // girl.name = 'RoseRose';
+    // console.log(girl.name);
     // girl.sex = 'female';
     // console.log(girl.sex);
+
+    /**
+    * 三: Proxy & Object.defineProperty
+    * 3. Object.defineProperty 无法响应数组操作，vue中通过遍历和重写Array数组原型方法操作方法实现
+    */
+
+    /**
+    * 四: 深层取值判断
+    */
+
+    const country = {
+        name: 'China',
+        city: {
+            name: 'BeiJing',
+            area: {
+                name: 'HaiDian'
+            }
+        }
+    }
+    // 传统方式
+    // const areaName = country.city
+    //     && country.city.area
+    //     && country.city.area.name;
+    // const areaId = country.provice.city.area.name;
+
+    // 利用 Proxy get()拦截 实现 (要注意的是Proxy第一个参数传入的是个对象)
+    // 基础版：利用 get() 对传入对象进行拦截
+    // function getData (obj) {
+    //     return new Proxy(obj, {
+    //         get(target, prop) {
+    //             console.log(prop);
+    //             return target[prop];
+    //         }
+    //     })
+    // }
+    // let res = getData(country).provice;
+    // console.log(res); // undefined
+
+    // 但是当 target[prop] 是undefined的时候，Proxy get()的入参变成了undefined，但Proxy第一个入参必须为对象
+    // 需要对 obj 为 undefined 的时候进行特殊处理，为了能够深层取值，只能对值为 undefined 的属性设置默认值为空对象
+    // function noop() {}
+    // function getData (obj) {
+    //     // 注意这里拦截的是 noop 函数
+    //     return new Proxy(noop, {
+    //     // 这里支持返回执行的时候传入的参数
+    //         apply(target, context, [arg]) {
+    //             return obj;
+    //         },
+    //         get(target, prop) {
+    //             return getData(obj[prop]);
+    //         }
+    //     })
+    // }
+    // let res1 = getData(country)() === country; // true
+    // let res2 = getData(country).city.name(); //BeiJing
+    // let res3 = getData(country).city.name.xxx.yyy.zzz(); // Cannot read property 'yyy' of undefined
+    // 我们理想中的应该是，如果属性为 undefined 就返回 undefined，但仍要支持访问下级属性，而不是抛出错误
+    // 顺着这个思路来的话，很明显当属性为 undefined 的时候也需要用 Proxy 进行特殊处理
+    // 所以我们需要一个具有下面特性的 get 方法：
+    // getData(undefined)() === undefined; // true
+    // getData(undefined).xxx.yyy.zzz() // undefined
+    // 这里完全不需要注意 get(undefined).xxx 是否为正确的值，因为想获取值必须要执行才能拿到
+    // 那么只需要对所有 undefined 后面访问的属性都默认为 undefined 就好了,所以我们需要一个代理了undefined后的返回对象
+    let isFirst = true;
+    function noop() {}
+    let proxyVoid = getData(undefined);
+    function getData(obj) {
+        if (obj === undefined && !isFirst) {
+            // 让 get 方法第一次接收代理 undefined 的时候不会死循环
+            return proxyVoid;
+        }
+        if (obj === undefined && isFirst) {
+            isFirst = false;
+        }
+        // 注意这里拦截的是 noop 函数
+        return new Proxy(noop, {
+            // 这里支持返回执行的时候传入的参数
+            apply(target, context, [arg]) {
+                return obj === undefined ? arg : obj;
+            },
+            get(target, prop) {
+                if (obj !== undefined &&
+                    obj !== null &&
+                    obj.hasOwnProperty(prop)) {
+                    return getData(obj[prop]);
+                }
+                return proxyVoid;
+            }
+        })
+    }
+    let res1 = getData(country)() === country; // true
+    console.log(res1);
+    let res2 = getData(country).city.name(); //BeiJing
+    console.log(res2);
+    let res3 = getData(country).city.name.xxx.yyy.zzz(); // undefined   
+    console.log(res3)
 
 </script>
 
