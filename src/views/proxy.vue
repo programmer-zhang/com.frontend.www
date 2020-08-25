@@ -270,7 +270,7 @@
     //     // 注意这里拦截的是 noop 函数
     //     return new Proxy(noop, {
     //     // 这里支持返回执行的时候传入的参数
-    //         apply(target, context, [arg]) {
+    //         apply(target, context, [arg]) {
     //             return obj;
     //         },
     //         get(target, prop) {
