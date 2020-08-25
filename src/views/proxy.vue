@@ -227,6 +227,11 @@
     */
 
     /**
+    * 四: Proxy & Object.defineProperty
+    * 4. Proxy 拦截方式更多, Object.defineProperty 只有 get 和 set
+    */    
+
+    /**
     * 四: 深层取值判断
     */
 
@@ -283,39 +288,39 @@
     // getData(undefined).xxx.yyy.zzz() // undefined
     // 这里完全不需要注意 get(undefined).xxx 是否为正确的值，因为想获取值必须要执行才能拿到
     // 那么只需要对所有 undefined 后面访问的属性都默认为 undefined 就好了,所以我们需要一个代理了undefined后的返回对象
-    let isFirst = true;
-    function noop() {}
-    let proxyVoid = getData(undefined);
-    function getData(obj) {
-        if (obj === undefined && !isFirst) {
-            // 让 get 方法第一次接收代理 undefined 的时候不会死循环
-            return proxyVoid;
-        }
-        if (obj === undefined && isFirst) {
-            isFirst = false;
-        }
-        // 注意这里拦截的是 noop 函数
-        return new Proxy(noop, {
-            // 这里支持返回执行的时候传入的参数
-            apply(target, context, [arg]) {
-                return obj === undefined ? arg : obj;
-            },
-            get(target, prop) {
-                if (obj !== undefined &&
-                    obj !== null &&
-                    obj.hasOwnProperty(prop)) {
-                    return getData(obj[prop]);
-                }
-                return proxyVoid;
-            }
-        })
-    }
-    let res1 = getData(country)() === country; // true
-    console.log(res1);
-    let res2 = getData(country).city.name(); //BeiJing
-    console.log(res2);
-    let res3 = getData(country).city.name.xxx.yyy.zzz(); // undefined   
-    console.log(res3)
+    // let isFirst = true;
+    // function noop() {}
+    // let proxyVoid = getData(undefined);
+    // function getData(obj) {
+    //     if (obj === undefined && !isFirst) {
+    //         // 让 get 方法第一次接收代理 undefined 的时候不会死循环
+    //         return proxyVoid;
+    //     }
+    //     if (obj === undefined && isFirst) {
+    //         isFirst = false;
+    //     }
+    //     // 注意这里拦截的是 noop 函数
+    //     return new Proxy(noop, {
+    //         // 这里支持返回执行的时候传入的参数
+    //         apply:function(target, context, [arg]) {
+    //             return obj === undefined ? arg : obj;
+    //         },
+    //         get:function(target, prop) {
+    //             if (obj !== undefined &&
+    //                 obj !== null &&
+    //                 obj.hasOwnProperty(prop)) {
+    //                 return getData(obj[prop]);
+    //             }
+    //             return proxyVoid;
+    //         }
+    //     })
+    // }
+    // let res1 = getData(country)() === country; // true
+    // console.log(res1);
+    // let res2 = getData(country).city.name(); //BeiJing
+    // console.log(res2);
+    // let res3 = getData(country).city.name.xxx.yyy.zzz(); // undefined   
+    // console.log(res3)
 
 </script>
 
