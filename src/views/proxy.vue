@@ -6,15 +6,15 @@
     * 一：设置私有变量
     * 传统设置私有变量
     */
-    // const PrivateTar = function() {
+    // const PrivateTar = function () {
     //     this.title = '定义公共变量';
-    //     this.set = (secret) => {
+    //     this.set = secret => {
     //         _secretTar = secret;
-    //     }
+    //     };
     //     this.get = () => {
     //         return _secretTar;
-    //     }
-    // }
+    //     };
+    // };
     // const privateTar = new PrivateTar();
     // privateTar.set('set变量');
     // console.log(privateTar.title); // '定义公共变量'
@@ -70,7 +70,7 @@
     //     phoneNum: '18512345678'
     // };
     // ValidTarget = new Proxy(ValidTarget, {
-    //     set: function(target, prop, value) {
+    //     set: function (target, prop, value) {
     //         if (prop === 'phoneNum') {
     //             // phone number validation
     //             let re = /^1[0-9]{10}$/;
@@ -81,7 +81,7 @@
     //         }
     //         target[prop] = value;
     //     }
-    // })
+    // });
     // ValidTarget.phoneNum = '21012345678'; // error message
 
     /**
@@ -103,7 +103,7 @@
     //         if (!ValidatorUtil[prop](value)) {
     //             target[prop] = value;
     //         }
-    //     },
+    //     }
     // });
 
     // ProxyTargetValidUtil.phoneNum = '11012345678';
@@ -243,7 +243,7 @@
                 name: 'HaiDian'
             }
         }
-    }
+    };
     // 传统方式
     // const areaName = country.city
     //     && country.city.area
@@ -258,7 +258,7 @@
     //             console.log(prop);
     //             return target[prop];
     //         }
-    //     })
+    //     });
     // }
     // let res = getData(country).provice;
     // console.log(res); // undefined
@@ -276,7 +276,7 @@
     //         get(target, prop) {
     //             return getData(obj[prop]);
     //         }
-    //     })
+    //     });
     // }
     // let res1 = getData(country)() === country; // true
     // let res2 = getData(country).city.name(); //BeiJing
@@ -319,7 +319,7 @@
     // console.log(res1);
     // let res2 = getData(country).city.name(); //BeiJing
     // console.log(res2);
-    // let res3 = getData(country).city.name.xxx.yyy.zzz(); // undefined   
+    // let res3 = getData(country).city.name.xxx.yyy.zzz(); // undefined
     // console.log(res3)
 
 </script>
