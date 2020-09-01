@@ -173,22 +173,24 @@
     /* Proxy */
     // let boy = {
     //     name: 'Jack',
-    //     age: 22
+    //     age: 22,
+    //     hobbies: ['足球', '篮球', '游泳']
     // };
 
-    // boy = new Proxy(boy, {
+    // let targetBoy = new Proxy(boy, {
     //     set: (target, prop, value) => {
-    //         console.log('监听到值的变化', prop);
+    //         console.log('监听到set', prop);
     //         target[prop] = value + '&Rose';
     //         return true;
     //     },
     //     get: (target, prop) => {
+    //         console.log('监听到get', prop);
     //         return target[prop] + '&Proxy';
     //     }
     // });
-    // boy.name = 'Jack'; // 监听到值的变化 name
-    // boy.sex = 'male'; // 监听到值的变化 sex
-    // console.log(boy.sex); // male&Rose&Proxy
+    // targetBoy.name = 'Jack'; // 监听到set name
+    // targetBoy.sex = 'male'; // 监听到set sex
+    // console.log(targetBoy.sex); // 监听到get sex male&Rose&Proxy
 
     /* Object.defineProperty */
     // let girl = {
@@ -215,6 +217,7 @@
     //         enumerable: true,
     //         configurable: true,
     //         set: newVal => {
+    //             observe(val);
     //             console.log('监听到值的变化', newVal);
     //             val = newVal;
     //         },
@@ -303,7 +306,8 @@
     //     });
     // }
     // observe(girl);
-    // girl.hobbies.push('健身'); // 监听到值的变化 push
+
+    // girl.hobbies.push('健身'); // 监听到方法执行 push
     // console.log(girl.hobbies); // ["篮球", "足球", "游泳", "健身"]
 
     /**
