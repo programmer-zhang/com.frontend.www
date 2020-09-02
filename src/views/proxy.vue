@@ -299,7 +299,7 @@
     * 2. Object.defineProperty 无法监听新增加的属性，需要监听的话使用Vue.set()重新设置添加属性
     */
 
-    /* Proxy */
+    /** Proxy */
     // let boy = {
     //     name: 'Jack',
     //     age: 22,
@@ -321,7 +321,7 @@
     // targetBoy.sex = 'male'; // 监听到set sex
     // console.log(targetBoy.sex); // 监听到get sex male&Rose&Proxy
 
-    /* Object.defineProperty */
+    /** Object.defineProperty */
     // let girl = {
     //     name: 'Rose',
     //     nickName: {
