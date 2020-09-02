@@ -2,6 +2,7 @@
     <div class="proxy-util">proxy 的使用</div>
 </template>
 <script>
+    /* globals Proxy */
 
     /**
     * 一：设置私有变量
@@ -405,6 +406,25 @@
     // console.log(res2);
     // let res3 = getData(country).city.name.xxx.yyy.zzz(); // undefined
     // console.log(res3)
+
+
+    /** 普通函数与构造函数的兼容 */
+    // class Test {
+    //     constructor(a, b) {
+    //         console.log('constructor', a, b);
+    //     }
+    // }
+
+    // // Test(1, 2) // throw an error(非new方式调用报错)
+    // let proxyClass = new Proxy(Test, {
+    //     apply: (target, thisArg, argumentsList) => {
+    //         // 如果想要禁止使用非new的方式来调用函数，直接抛出异常即可
+    //         // throw new Error(`Function ${target.name} cannot be invoked without 'new'`)
+    //         return new (target.bind(thisArg, ...argumentsList))();
+    //     }
+    // });
+
+    // proxyClass(1, 2); // constructor 1 2
 </script>
 
 
