@@ -247,11 +247,12 @@
     // console.log(res); // {}
     // console.log(res.xxx.yyy.zzz); // {}
 
+    /** 把对象属性当做函数去执行，最终返回入参，这样只要保证最后入参是undefined就好(参考网络方案) */
     // function noop() {}
     // function getData(obj) {
     //     // 注意这里拦截的是 noop 函数
     //     return new Proxy(noop, {
-    //     // 这里支持返回执行的时候传入的参数
+    //         // 这里支持返回执行的时候传入的参数
     //         apply: (target, context, [arg]) => {
     //             return obj;
     //         },
@@ -262,7 +263,8 @@
     // }
     // let res1 = getData(country)() === country; // true
     // let res2 = getData(country).city.name(); // BeiJing
-    // let res3 = getData(country).city.name.xxx.yyy.zzz(); // Cannot read property 'yyy' of undefined
+    // let res3 = getData(country).city.name.xxx(); // undefined
+    // let res4 = getData(country).city.name.xxx.yyy.zzz(); // Cannot read property 'yyy' of undefined
 
     /**
     * 五: 深层取值判断
