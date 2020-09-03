@@ -32,8 +32,8 @@
     //     _secretTar: '定义私有变量',
     //     title: '定义公共变量'
     // };
-    // ProxyTarget = new Proxy(TargetData, {
-    //     get: function(target, prop) {
+    // let ProxyTarget = new Proxy(TargetData, {
+    //     get: (target, prop) => {
     //         // 以下划线开头的作为私有变量
     //         if (prop.startsWith('_')) {
     //             console.log('不能获取私有变量！');
@@ -42,7 +42,7 @@
     //         // 非私有变量，返回原属性值
     //         return target[prop];
     //     },
-    //     set: function(target, prop, value) {
+    //     set: (target, prop, value) => {
     //         if (prop.startsWith('_')) {
     //             console.log('不能修改私有变量！');
     //             return false;
@@ -50,7 +50,7 @@
     //         target[prop] = value;
     //     },
     //     // in 操作符的捕捉器
-    //     has: function(target, prop) {
+    //     has: (target, prop) => {
     //         return prop.startsWith('_') ? false : (prop in target);
     //     }
     // });
@@ -60,6 +60,11 @@
     // ProxyTarget._secretDrink = '修改私有变脸'; // 不能修改私有变量！
     // console.log('_secretDrink' in ProxyTarget); // false
     // console.log('title' in ProxyTarget); // true
+
+    /** has 操作符只对has...in拦截，for...in拦截无效 */
+    // for (let i in ProxyTarget) {
+    //     console.log(ProxyTarget[i]);
+    // }
 
     /**
     * 二：利用 proxy 进行数据校验
@@ -189,15 +194,15 @@
     * 五: 深层取值判断
     */
 
-    // const country = {
-    //     name: 'China',
-    //     city: {
-    //         name: 'BeiJing',
-    //         area: {
-    //             name: 'HaiDian'
-    //         }
-    //     }
-    // };
+    const country = {
+        name: 'China',
+        city: {
+            name: 'BeiJing',
+            area: {
+                name: 'HaiDian'
+            }
+        }
+    };
     // 传统方式
     // const areaName = country.city
     //     && country.city.area
@@ -210,16 +215,17 @@
     * 1. 基础版：利用 get() 对传入对象进行拦截
     */
 
-    // function getData (obj) {
+    // function getData(obj) {
     //     return new Proxy(obj, {
-    //         get(target, prop) {
+    //         get: (target, prop) => {
     //             console.log(prop);
     //             return target[prop];
     //         }
     //     });
     // }
-    // let res = getData(country).provice;
+    // let res = getData(country).provice; // provice
     // console.log(res); // undefined
+    // console.log(res.xxx.yyy.zzz); // throw error
 
     /**
     * 五: 深层取值判断
@@ -229,8 +235,20 @@
     *    需要对 obj 为 undefined 的时候进行特殊处理，为了能够深层取值，只能对值为 undefined 的属性设置默认值为空对象
     */
 
+    // function getData(obj = {}) {
+    //     return new Proxy(obj, {
+    //         get: (target, prop) => {
+    //             console.log(prop);
+    //             return getData(target[prop]); // 返回一个代理对象，让其在undefined的时候还能够继续执行
+    //         }
+    //     });
+    // }
+    // let res = getData(country).provice; // provice
+    // console.log(res); // {}
+    // console.log(res.xxx.yyy.zzz); // {}
+
     // function noop() {}
-    // function getData (obj) {
+    // function getData(obj) {
     //     // 注意这里拦截的是 noop 函数
     //     return new Proxy(noop, {
     //     // 这里支持返回执行的时候传入的参数
@@ -277,21 +295,21 @@
     //             return obj === undefined ? arg : obj;
     //         },
     //         get: (target, prop) => {
-    //             if (obj !== undefined &&
-    //                 obj !== null &&
-    //                 obj.hasOwnProperty(prop)) {
+    //             if (obj !== undefined
+    //                 && obj !== null
+    //                 && obj.hasOwnProperty(prop)) {
     //                 return getData(obj[prop]);
     //             }
     //             return proxyVoid;
     //         }
-    //     })
+    //     });
     // }
     // let res1 = getData(country)() === country; // true
     // console.log(res1);
-    // let res2 = getData(country).city.name(); //BeiJing
+    // let res2 = getData(country).city.name(); // BeiJing
     // console.log(res2);
     // let res3 = getData(country).city.name.xxx.yyy.zzz(); // undefined
-    // console.log(res3)
+    // console.log(res3);
 
     /**
     * 六: Proxy & Object.defineProperty
