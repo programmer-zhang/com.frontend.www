@@ -265,15 +265,15 @@
     * 五: 深层取值判断
     */
 
-    const country = {
-        name: 'China',
-        city: {
-            name: 'BeiJing',
-            area: {
-                name: 'HaiDian'
-            }
-        }
-    };
+    // const country = {
+    //     name: 'China',
+    //     city: {
+    //         name: 'BeiJing',
+    //         area: {
+    //             name: 'HaiDian'
+    //         }
+    //     }
+    // };
     // 传统方式
     // const areaName = country.city
     //     && country.city.area
@@ -318,7 +318,7 @@
     // console.log(res); // {}
     // console.log(res.xxx.yyy.zzz); // {}
 
-    /** 把对象属性当做函数去执行，最终返回入参，这样只要保证最后入参是undefined就好(参考网络方案) */
+    // /** 把对象属性当做函数去执行，最终返回入参，这样只要保证最后入参是undefined就好(参考网络方案) */
     // function noop() {}
     // function getData(obj) {
     //     // 注意这里拦截的是 noop 函数
@@ -411,6 +411,7 @@
     // targetBoy.name = 'Jack'; // 监听到set name
     // targetBoy.sex = 'male'; // 监听到set sex
     // console.log(targetBoy.sex); // 监听到get sex male&Rose&Proxy
+    // targetBoy.hobbies.push('健身');
 
     /** Object.defineProperty */
     // let girl = {
