@@ -2,11 +2,11 @@
     <div class="proxy-util">proxy 的使用</div>
 </template>
 <script>
-    /* globals Proxy */
+    /* globals Proxy, Reflect*/
 
     /**
-    * 一：设置私有变量
-    * 传统方式设置私有变量
+    * 一：设置私有变量/拦截has...in操作/给出提示信息或是阻止特定操作
+    * 1. 传统方式设置私有变量
     */
 
     // const PrivateTar = function () {
@@ -25,8 +25,8 @@
     // console.log(privateTar._secretTar); // undefined
 
     /**
-    * 一：设置私有变量
-    * proxy 设置私有变量
+    * 一：设置私有变量/拦截has...in操作/给出提示信息或是阻止特定操作
+    * 1. proxy 设置私有变量
     */
     // let TargetData = {
     //     _secretTar: '定义私有变量',
@@ -63,8 +63,57 @@
 
     /** has 操作符只对has...in拦截，for...in拦截无效 */
     // for (let i in ProxyTarget) {
+    //     console.log(i);
     //     console.log(ProxyTarget[i]);
     // }
+
+    /**
+    * 一：设置私有变量/拦截has...in操作/给出提示信息或是阻止特定操作
+    * 2. 给出提示信息或是阻止特定操作
+    */
+
+    // let dataStore = {
+    //     noDelete: 1235,
+    //     oldMethod: () => {},
+    //     doNotChange: 'tried and true'
+    // };
+
+    // const NODELETE = ['noDelete'];
+    // const DEPRECATED = ['oldMethod'];
+    // const NOCHANGE = ['doNotChange'];
+
+    // dataStore = new Proxy(dataStore, {
+    //     set: (target, key, value, proxy) => {
+    //         if (NOCHANGE.includes(key)) {
+    //             throw Error(`Error! ${key} is immutable.`);
+    //         }
+    //         return Reflect.set(target, key, value, proxy);
+    //     },
+    //     deleteProperty: (target, key) => {
+    //         if (NODELETE.includes(key)) {
+    //             throw Error(`Error! ${key} cannot be deleted.`);
+    //         }
+    //         return Reflect.deleteProperty(target, key);
+
+    //     },
+    //     get: (target, key, proxy) => {
+    //         if (DEPRECATED.includes(key)) {
+    //             console.warn(`Warning! ${key} is deprecated.`);
+    //         }
+    //         var val = target[key];
+
+    //         return typeof val === 'function'
+    //         ? function (...args) {
+    //             Reflect.apply(target[key], target, args);
+    //         }
+    //         : val;
+    //     }
+    // });
+
+    // dataStore.doNotChange = 'foo'; // error: doNotChange is immutable.
+    // delete dataStore.noDelete; // error: noDelete cannot be deleted.
+    // dataStore.oldMethod(); // warning: oldMethod is deprecated.
+
 
     /**
     * 二：利用 proxy 进行数据校验
@@ -74,7 +123,7 @@
     //     phoneNum: '18512345678'
     // };
     // ValidTarget = new Proxy(ValidTarget, {
-    //     set: function (target, prop, value) {
+    //     set: (target, prop, value) => {
     //         if (prop === 'phoneNum') {
     //             // phone number validation
     //             let re = /^1[0-9]{10}$/;
@@ -93,7 +142,7 @@
     * 2. 抽离校验模块
     */
     // let ValidatorUtil = {
-    //     phoneNum: function(value) {
+    //     phoneNum: value => {
     //         let re = /^1[0-9]{10}$/;
     //         if (!re.test(value)) {
     //             // console.log(`Cannot set ${prop} to ${value}. Wrong format. Should be 1xx-xxxx-xxxx`);
@@ -102,16 +151,16 @@
     //     }
     // };
 
-    // ProxyTargetValidUtil = new Proxy(ValidatorUtil, {
-    //     set: function(target, prop, value) {
+    // ValidatorUtil = new Proxy(ValidatorUtil, {
+    //     set: (target, prop, value) => {
     //         if (!ValidatorUtil[prop](value)) {
     //             target[prop] = value;
     //         }
     //     }
     // });
 
-    // ProxyTargetValidUtil.phoneNum = '11012345678';
-    // console.log(ProxyTargetValidUtil.phoneNum); // error message
+    // ValidatorUtil.phoneNum = '11012345678';
+    // console.log(ValidatorUtil.phoneNum); // error message
 
     /**
     * 二：利用 proxy 进行数据校验
@@ -163,9 +212,31 @@
     // bill.age = 15;
 
     /**
-    * 三: 利用proxy进行mock数据
-    * 1. 开发过程中经常需要mock数据，
+    * 三: 利用proxy进行记录对象访问
     */
+
+    // let api = {
+    //     apiKey: 'xxxx',
+    //     getUsers: () => {}
+    // };
+
+    // api = new Proxy(api, {
+    //     get: (target, key, proxy) => {
+    //         var value = target[key];
+    //         return function () {
+    //             logMethodAsync(new Date(), key);
+    //             return Reflect.apply(value, target, arguments);
+    //         };
+    //     }
+    // });
+
+    // api.getUsers();
+
+    // function logMethodAsync(timestamp, method) {
+    //     setTimeout(() => {
+    //         console.log(`${timestamp} - Logging ${method} request asynchronously.`);
+    //     }, 0);
+    // }
 
     /**
     * 四: 普通函数与构造函数的兼容
