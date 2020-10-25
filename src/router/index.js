@@ -10,14 +10,15 @@ import Copy from '@/views/copy.vue';
 import ChangeDatas from '@/views/changeDatas.vue';
 import CssTest from '@/views/cssTest.vue';
 import WholeLife from '@/views/wholeLife.vue';
-// import Extend from '@/views/extend.vue';
+import Extend from '@/views/extend.vue';
 import ExpendCard from '@/views/expendCard.vue';
 import VueQuillEditor from '@/views/vueQuillEditor.vue';
 import Wechat from '@/views/wechat.vue';
 import CssTestPhone from '@/views/cssTestPhone.vue';
 import Tree from '@/views/tree.vue';
-// import Currying from '@/views/currying.vue';
+import Currying from '@/views/currying.vue';
 import Proxy from '@/views/proxy.vue';
+import Tabindex from '@/views/tabindex.vue';
 
 Vue.use(Router)
 
@@ -80,11 +81,11 @@ export default new Router({
         name: 'WholeLife',
         component: WholeLife
     },
-    // {
-    //     path: '/extend.html',
-    //     name: 'Extend',
-    //     component: Extend
-    // },
+    {
+        path: '/extend.html',
+        name: 'Extend',
+        component: Extend
+    },
     {
         path: '/expendCard.html',
         name: 'ExpendCard',
@@ -107,17 +108,23 @@ export default new Router({
         component: Tree,
         showInfo: '用 iView 实现 Tree'
     },
-    // {
-    //     path: '/currying.html',
-    //     name: 'Currying',
-    //     component: Currying,
-    //     showInfo: '手动实现 bind/call/apply/Currying'
-    // },
+    {
+        path: '/currying.html',
+        name: 'Currying',
+        component: Currying,
+        showInfo: '手动实现 bind/call/apply/Currying'
+    },
     {
         path: '/proxy.html',
         name: 'Proxy',
         component: Proxy,
         showInfo: 'Proxy 的使用'
+    },
+    {
+        path: '/tabindex.html',
+        name: 'Tabindex',
+        component: Tabindex,
+        showInfo: 'HTML tabindex 的使用'
     }
   ]
 })
