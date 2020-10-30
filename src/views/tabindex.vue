@@ -4,21 +4,24 @@
         <button type="button">未设置tabindex</button>
         <button type="button" tabindex="-1">tabindex === -1</button>
         <button type="button" tabindex="0">tabindex === 0</button>
-        <button type="button" tabindex="1">tabindex === 1</button>
         <button type="button" tabindex="999">tabindex === 999</button>
+        <button type="button" tabindex="1">tabindex === 1</button>
         <button type="button" tabindex="0">tabindex === 0</button>
+        <button type="button" tabindex="100">tabindex === 100</button>
+        <button type="button" tabindex="90">tabindex === 90</button>
+        <button type="button" tabindex="101">tabindex === 101</button>
         <button type="button" tabindex="0" @click="clickBtn()">点击让DIV聚焦</button>
-        <div id="FocusDiv" ref="FocusDiv" tabindex="-1">这是一个div</div>
+        <div id="FocusDiv" tabindex="-1">这是一个div</div>
     </div>
 </template>
 <script>
 export default {
     methods: {
-        clickBtn: function() {
+        clickBtn() {
             document.getElementById('FocusDiv').focus();
         }
     }
-}
+};
 </script>
 <style lang="scss">
 .tabindex-content {
