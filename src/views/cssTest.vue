@@ -13,7 +13,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="(item, index) in explainData">
+				<tr v-for="item in explainData" :key="item.name">
 					<td>{{item.name}}</td>
 					<td>{{item.desc}}</td>
 				</tr>

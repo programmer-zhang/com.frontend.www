@@ -6,18 +6,21 @@
 				<span class="cancel" @click="cancel()">取消</span>
 				<span class="confirm" @click="confirm()">确定</span>
 			</div>
-			<div class="scroll-panel" 
-				v-if="swiperData && swiperData.length>0" 
-				v-for="(item, index) in swiperData" 
-				:class="{'swiper-half': swiperData.length == 2, 'swiper-whole': swiperData.length == 1, 'swiper-right':index==1, 'swiper-left':index==0}">
-				<div class="swiper-container">
-				    <div class="swiper-wrapper">
-					    <div class="swiper-slide" v-for="(subItem, subIndex) in item">
-							<span class="swiper-title">{{subItem}}</span>
-					    </div>
-				    </div>
-				</div>	
-			</div>
+			<template v-if="swiperData && swiperData.length">
+				<div class="scroll-panel" 
+					v-for="item in swiperData"
+					:key="item"
+					:index="index"
+					:class="{'swiper-half': swiperData.length == 2, 'swiper-whole': swiperData.length == 1, 'swiper-right' :index == 1, 'swiper-left' :index == 0}">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide" v-for="subItem in item" :key="subItem">
+								<span class="swiper-title">{{subItem}}</span>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</template>
 		</div>
 	</div>
 </template>

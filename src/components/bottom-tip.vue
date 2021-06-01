@@ -15,7 +15,7 @@
                         <div class="tip-image" style="background-image: url(../../static/images/GitHub.png)"></div>
                     </div>
                 </div>
-                <div class="close" @click="close()"></div>
+                <div class="close" @click="close()">X</div>
             </div>
         </div>
     </div>
@@ -174,10 +174,12 @@
         margin-top: 35px;
         height: 35px;
         width: 35px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        background-image: url('https://webimg.baichanghui.com/%E5%85%B3%E9%97%AD@3x.png');
+        line-height: 35px;
+        font-weight: 700;
+        font-size: 20px;
+        color: #575D5F;
+        border: 1px solid #575D5F;
+        border-radius: 50%;
         cursor: pointer;
     }
 }

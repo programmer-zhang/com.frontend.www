@@ -1,6 +1,6 @@
 <template>
     <div class="count-down">
-        <div class="time-out" v-for="(item, index) in countDownList">
+        <div class="time-out" v-for="item in countDownList" :key="item.timeOut">
             <span>剩余时间为：</span>
             <span>{{item.time}}</span>
         </div>
@@ -24,13 +24,16 @@ export default {
 	        this.setTimer(this.countDownList[index].timeOut, index);
     	}
     },
+    beforeDestory() {
+        this.timeCount && clearInterval(this.timeCount);
+    },
     methods: {
         setTimer(time, index) { 
             if (time < new Date().getTime()) {
                 return;
             }
             let self = this;
-            let timeCount = setInterval(() => {
+            self.timeCount = setInterval(() => {
                 let ts = time - new Date().getTime(); 
                 let dd = parseInt(ts / 1000 / 60 / 60 / 24, 10); 
                 let hh = parseInt(ts / 1000 / 60 / 60 % 24, 10);

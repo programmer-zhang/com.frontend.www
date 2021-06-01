@@ -1,7 +1,7 @@
 <template>
     <div class="hello">
-        <div class="hello-item" v-for="(item, index) in routerListData">
-            <a :href="item.path">{{item.showInfo||item.name}}</a>
+        <div class="hello-item" v-for="item in routerListData" :key="item.path">
+            <a :href="item.path">{{item.showInfo || item.name}}</a>
         </div>
     </div>
 </template>

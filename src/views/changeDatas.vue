@@ -1,8 +1,8 @@
 <template>
-	<div class="changData">
+	<div class="changData" v-if="showList && showList.length">
 		<div class="changeData-item" 
-			v-if="showList && showList.length>0"
-			v-for="(item, index) in showList"
+			v-for="item in showList"
+			:key="item.color"
 			:style="{'backgroundColor': item.color}">
 			<span>{{item.text}}</span>
 		</div>

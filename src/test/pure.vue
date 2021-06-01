@@ -8,7 +8,7 @@
 		<div class="pure-u-1 pure-u-md-2-3">
 			<div class="pure-menu pure-menu-horizontal menu-list">
 				<ul class="pure-menu-list">
-					<li class="pure-menu-item menu-item" v-for="(item, index) in navData">
+					<li class="pure-menu-item menu-item" v-for="item in navData" :key="item">
 						<a href="" class="pure-menu-link">{{item}}</a>
 					</li>
 				</ul>
