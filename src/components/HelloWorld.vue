@@ -11,7 +11,7 @@ export default {
     data() {
         return {
             routerListData: []
-        }
+        };
     },
     mounted() {
         if (this.$router
@@ -21,7 +21,7 @@ export default {
             this.routerListData = this.$router.options.routes;
         }
     }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
