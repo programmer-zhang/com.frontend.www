@@ -22,6 +22,7 @@ import Tree from '@/views/tree.vue';
 import Currying from '@/views/currying.vue';
 import Proxy from '@/views/proxy.vue';
 import Tabindex from '@/views/tabindex.vue';
+import LeetCode from '@/views/leetCode.vue';
 
 Vue.use(Router);
 
@@ -128,6 +129,12 @@ export default new Router({
             name: 'Tabindex',
             component: Tabindex,
             showInfo: 'HTML tabindex 的使用'
+        },
+        {
+            path: '/leetcode.html',
+            name: 'LeetCode',
+            component: LeetCode,
+            showInfo: 'leetCode做题记录'
         }
     ]
 });
