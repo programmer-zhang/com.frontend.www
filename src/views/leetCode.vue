@@ -26,7 +26,7 @@ let checkSubarraySum = function(nums, k) {
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function(nums) {
+let removeDuplicates = function(nums) {
     let j = 0;
     for(let i = 1, len = nums.length; i < len; i++) {
         if (nums[i] !== nums[j]) {
@@ -36,5 +36,28 @@ var removeDuplicates = function(nums) {
     }
     return j+1;
 };
-removeDuplicates([1, 1, 2]);
+// removeDuplicates([1, 1, 2]);
+
+/**
+ * @desc 买股票的最佳时机
+ * @param {number[]} prices
+ * @return {number}
+ */
+let maxProfit = function(prices) {
+    if (!prices || !prices.length || prices.length < 2) {
+        return 0;
+    }
+    let hold = -prices[0];  // 持有股票
+    let nohold = 0;     // 未持有股票
+    for(let i = 0, len = prices.length; i<len; i++) {
+        console.log('当日', prices[i]);
+        nohold = Math.max(nohold, hold+prices[i]);
+        hold = Math.max(hold, nohold-prices[i]);
+        console.log('nohold', nohold);
+        console.log('hold', hold);
+    }
+    console.log(nohold);
+    return nohold;
+};
+// maxProfit([7,1,5,3,6,4]);
 </script>
