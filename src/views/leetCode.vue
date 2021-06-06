@@ -22,7 +22,7 @@ let checkSubarraySum = function(nums, k) {
 
 /**
  * @desc 删除排序数组中的重复项
- * 解题思路: 一个快指针i，一个慢指针j,是有序数组，所以nums[i] !== nums[j] 的中间都是相同的，将快指针的值指给慢指针+1的位置即可
+ * @answer 一个快指针i，一个慢指针j,是有序数组，所以nums[i] !== nums[j] 的中间都是相同的，将快指针的值指给慢指针+1的位置即可
  * @param {number[]} nums
  * @return {number}
  */
@@ -87,6 +87,6 @@ let rotate = function(nums, k) {
     reverseNums(nums, 0, k - 1);
     reverseNums(nums, k, nums.length - 1);
 };
-rotate([1,2,3,4,5,6,7], 3);
+// rotate([1,2,3,4,5,6,7], 3);
 
 </script>
