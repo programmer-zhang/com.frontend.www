@@ -56,7 +56,6 @@ let maxProfit = function(prices) {
         console.log('nohold', nohold);
         console.log('hold', hold);
     }
-    console.log(nohold);
     return nohold;
 };
 // maxProfit([7,1,5,3,6,4]);
