@@ -60,4 +60,33 @@ let maxProfit = function(prices) {
     return nohold;
 };
 // maxProfit([7,1,5,3,6,4]);
+
+/**
+ * @desc 旋转数组
+ * @answer1 利用反转数组，先反转全部的，然后反转前K个，再反转K个之后的
+ * @answer2 使用临时数组，将原数组放在临时数组中，然后按照(i + k) % length的新下标进行重新赋值
+ * @answer3 类似约瑟夫环，将数组进行环形赋值
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+let rotate = function(nums, k) {
+    if (!nums || !nums.length || k < 0) {
+        return nums;
+    }
+    let reverseNums = function (nums, startIndex, endIndex) {
+        while (startIndex < endIndex) {
+            let tmp = nums[startIndex];
+            nums[startIndex++] = nums[endIndex];
+            nums[endIndex--] = tmp;
+        }
+        console.log('doing', nums);
+    }
+    k = k%nums.length;
+    reverseNums(nums, 0, nums.length - 1);
+    reverseNums(nums, 0, k - 1);
+    reverseNums(nums, k, nums.length - 1);
+};
+rotate([1,2,3,4,5,6,7], 3);
+
 </script>
