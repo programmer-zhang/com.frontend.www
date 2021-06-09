@@ -62,7 +62,7 @@ let removeDuplicates = function(nums) {
 // removeDuplicates([1, 1, 2]);
 
 /**
- * @desc 买股票的最佳时机
+ * @desc 122 买股票的最佳时机
  * @param {number[]} prices
  * @return {number}
  */
@@ -84,7 +84,7 @@ let maxProfit = function(prices) {
 // maxProfit([7,1,5,3,6,4]);
 
 /**
- * @desc 旋转数组
+ * @desc 189 旋转数组
  * @answer1 利用反转数组，先反转全部的，然后反转前K个，再反转K个之后的
  * @answer2 使用临时数组，将原数组放在临时数组中，然后按照(i + k) % length的新下标进行重新赋值
  * @answer3 类似约瑟夫环，将数组进行环形赋值
@@ -112,7 +112,7 @@ let rotate = function(nums, k) {
 // rotate([1,2,3,4,5,6,7], 3);
 
 /**
- * @desc 存在重复元素
+ * @desc 217 存在重复元素
  * @answer1 使用创建对象，根据数组值，判断有无添加过
  * @answer2 使用排序，再判断相邻是否重复
  * @answer3 使用 new Set
