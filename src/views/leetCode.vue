@@ -25,7 +25,7 @@ let checkSubarraySum = function(nums, k) {
  * @param {number} x
  * @return {number}
  */
-var reverse = function(x) {
+let reverse = function(x) {
     if (isNaN(x)) {
         return 0;
     }
@@ -44,7 +44,7 @@ var reverse = function(x) {
 
 
 /**
- * @desc 删除排序数组中的重复项
+ * @desc 26 删除排序数组中的重复项
  * @answer 一个快指针i，一个慢指针j,是有序数组，所以nums[i] !== nums[j] 的中间都是相同的，将快指针的值指给慢指针+1的位置即可
  * @param {number[]} nums
  * @return {number}
@@ -111,5 +111,24 @@ let rotate = function(nums, k) {
 };
 // rotate([1,2,3,4,5,6,7], 3);
 
+/**
+ * @desc 存在重复元素
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+let containsDuplicate = function(nums) {
+    if (!nums || !nums.length) {
+        return false;
+    }
+    let mapNums = {};
+    for(let i in nums) {
+        if (mapNums && mapNums[nums[i]]) {
+            return true;
+        }
+        mapNums[nums[i]] = true;
+    }
+    return false;
+};
+console.log(containsDuplicate([1,2,3,4]));
 
 </script>
