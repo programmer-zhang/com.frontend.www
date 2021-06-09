@@ -21,6 +21,29 @@ let checkSubarraySum = function(nums, k) {
 // checkSubarraySum([23,2,4,6,7], 6);
 
 /**
+ * @desc 7 整数反转
+ * @param {number} x
+ * @return {number}
+ */
+var reverse = function(x) {
+    if (isNaN(x)) {
+        return 0;
+    }
+    let resSymbol = '';
+    let resArr = x.toString().split('');
+    if (resArr.length && isNaN(+resArr[0])) {
+        resSymbol = resArr.splice(0, 1);
+    }
+    let resStr = resArr.reverse().join('');
+    let res = parseInt((resSymbol + parseInt(resStr, 10)), 10);
+    if ((-Math.pow(2, 31) >= res) || (res >= Math.pow(2, 31)-1)) {
+        return 0;
+    }
+    return res;
+};
+
+
+/**
  * @desc 删除排序数组中的重复项
  * @answer 一个快指针i，一个慢指针j,是有序数组，所以nums[i] !== nums[j] 的中间都是相同的，将快指针的值指给慢指针+1的位置即可
  * @param {number[]} nums
@@ -87,5 +110,6 @@ let rotate = function(nums, k) {
     reverseNums(nums, k, nums.length - 1);
 };
 // rotate([1,2,3,4,5,6,7], 3);
+
 
 </script>
