@@ -113,6 +113,9 @@ let rotate = function(nums, k) {
 
 /**
  * @desc 存在重复元素
+ * @answer1 使用创建对象，根据数组值，判断有无添加过
+ * @answer2 使用排序，再判断相邻是否重复
+ * @answer3 使用 new Set
  * @param {number[]} nums
  * @return {boolean}
  */
@@ -129,6 +132,18 @@ let containsDuplicate = function(nums) {
     }
     return false;
 };
-console.log(containsDuplicate([1,2,3,4]));
+let containsDuplicate2 = function(nums) {
+    if (!nums || !nums.length) {
+        return false;
+    }
+    nums.sort((a, b) => a - b);
+    for (let i = 0, len = nums.length-1; i < len; i++) {
+        if (nums[i] === nums[i+1]) {
+            return true;
+        }
+    }
+    return false;
+};
+// console.log(containsDuplicate2([1,2,3,1]));
 
 </script>
