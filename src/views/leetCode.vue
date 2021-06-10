@@ -146,4 +146,21 @@ let containsDuplicate2 = function(nums) {
 };
 // console.log(containsDuplicate2([1,2,3,1]));
 
+/**
+ * @desc 只出现一次的数字
+ * @answer 要求具有线性时间复杂度，不能使用排序，可以使用的情况下可以先排序，再处理就很容易。本题使用异或运算，经过异或运算之后，就剩下了不相同的自己
+ * @param {number[]} nums
+ * @return {number}
+ */
+let singleNumber = function(nums) {
+    if (!nums || !nums.length) {
+        return false;
+    }
+    let res = 0;
+    for (let i = 0, len = nums.length; i < len; i++) {
+        res = res ^ nums[i];
+    }
+    return res;
+};
+// singleNumber([4,1,2,1,2]);
 </script>
