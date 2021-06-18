@@ -1,6 +1,6 @@
 # com.frontend.www
 
-> A Vue.js project
+> 自用代码测试与部分功能实现项目
 
 ## Build Setup
 
