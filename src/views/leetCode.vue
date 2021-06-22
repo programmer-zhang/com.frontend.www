@@ -61,7 +61,7 @@ let removeDuplicates = function (nums) {
             nums[j] = nums[i];
         }
     }
-    return j+1;
+    return j + 1;
 };
 // removeDuplicates([1, 1, 2]);
 
