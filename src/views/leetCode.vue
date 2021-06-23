@@ -171,4 +171,20 @@ let singleNumber = function (nums) {
     return res;
 };
 // singleNumber([4,1,2,1,2]);
+
+/**
+ * 9 回文数
+ *
+ * @param {number} x 数字
+ * @return {boolean} 是回文数
+ */
+let isPalindrome = function (x) {
+    if (x < 0) {
+        return false;
+    }
+    let xReverse = x.toString().split('').reverse().join('');
+    return xReverse === x.toString();
+
+};
+// console.log(isPalindrome(0));
 </script>
