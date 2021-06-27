@@ -175,6 +175,7 @@ let singleNumber = function (nums) {
 /**
  * 9 回文数
  *
+ * @answer 回文数正反一致，reverse之后是相同的
  * @param {number} x 数字
  * @return {boolean} 是回文数
  */
