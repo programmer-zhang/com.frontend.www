@@ -1,3 +1,4 @@
+// CSS冷门属性 mix-blend-mode 制作文字镂空效果
 <template>
     <div class="mix-blend-mode">
         <div class="menu" :class="{'closed': !openMenu}" @click="toggleMenu">
