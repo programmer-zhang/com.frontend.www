@@ -1,6 +1,6 @@
 <template>
     <div class="tabindex-content">
-        <!-- <div class="tabindex-title">HTML tabindex的使用</div>
+        <div class="tabindex-title">HTML tabindex的使用</div>
         <button type="button">未设置tabindex</button>
         <button type="button" tabindex="-1">tabindex === -1</button>
         <button type="button" tabindex="0">tabindex === 0</button>
@@ -11,7 +11,7 @@
         <button type="button" tabindex="90">tabindex === 90</button>
         <button type="button" tabindex="101">tabindex === 101</button>
         <button type="button" tabindex="0" @click="clickBtn()">点击让DIV聚焦</button>
-        <div id="FocusDiv" tabindex="-1">这是一个div</div> -->
+        <div id="FocusDiv" tabindex="-1">这是一个div</div>
         <!-- 后续部分是模拟JS点击使用 -->
         <div class="tabindex-title">JS 模拟点击事件</div>
         <button type="button" id="SimulateClickDom" @click="simulateClick()">一个普通的按钮</button>

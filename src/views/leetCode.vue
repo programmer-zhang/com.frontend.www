@@ -188,4 +188,58 @@ let isPalindrome = function (x) {
 
 };
 // console.log(isPalindrome(0));
+
+/**
+ * 两个数组的交集②
+ * 
+ * @answer1 使用排序+双指针
+ * @answer2 使用哈希表
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+let intersect = function(nums1, nums2) {
+    // 定义双指针
+    let i = 0;
+    let j = 0;
+    // 定义结果数组
+    let res = [];
+    // 两数组排序处理
+    nums1.sort((a, b) => {
+        return a - b;
+    });
+    nums2.sort((a, b) => {
+        return a - b;
+    });
+    while(i < nums1.length && j < nums2.length) {
+        if (nums1[i] === nums2[j]) {
+            res.push(nums1[i]);
+            i++;
+            j++;
+        }
+        else {
+            nums1[i] > nums2[j] ? j++ : i++;
+        }
+    }
+    return res;
+};
+
+let intersect2 = function(nums1, nums2) {
+    let map = {};
+    let arr = [];
+    // 先将nums1map化，并得到nums1中数据的个数
+    for(let i of nums1) {
+        map[i] ? map[i]++ : map[i] = 1;
+    }
+    console.log(map);
+    for(let j of nums2) {
+        if (map[j]) {
+            // 如果命中map中的数字说明相同，压入结果数组的同时出现次数--;
+            arr.push(j);
+            map[j]--;
+        }
+    }
+    return arr;
+}
+// console.log(intersect2([1,2,2,1], [2,2]));
 </script>
