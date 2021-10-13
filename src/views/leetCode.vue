@@ -241,4 +241,43 @@ let intersect2 = function (nums1, nums2) {
     return arr;
 };
 // console.log(intersect2([1,2,2,1], [2,2]));
+
+/**
+ * 移动零
+ * 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+ * @answer1 删掉0值，然后添加在最后
+ * @answer2 双指针，把非零值往前放，后边加上零值
+ * @param {number[]} nums 原始数组
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+let moveZeroes = function (nums) {
+    if (!nums || !nums.length) {
+        return;
+    }
+    let length = nums.length;
+    nums = nums.filter(item => item);
+    for (let i = nums.length; i < length; i++) {
+        nums.push(0);
+    }
+    return nums;
+};
+// console.log(moveZeroes([0, 1, 0, 3, 12]));
+
+let moveZeroes2 = function (nums) {
+    if (!nums || !nums.length) {
+        return;
+    }
+    let isNoneZeroIndex = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i]) {
+            nums[isNoneZeroIndex++] = nums[i];
+        }
+    }
+    while (isNoneZeroIndex < nums.length)
+    {
+        nums[isNoneZeroIndex++] = 0;
+    }
+    return nums;
+};
+// console.log(moveZeroes2([0, 1, 0, 3, 12]));
 </script>
