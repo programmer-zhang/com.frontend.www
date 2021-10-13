@@ -190,7 +190,7 @@ let isPalindrome = function (x) {
 // console.log(isPalindrome(0));
 
 /**
- * 两个数组的交集②
+ * 350 两个数组的交集②
  *
  * @answer1 使用排序+双指针
  * @answer2 使用哈希表
