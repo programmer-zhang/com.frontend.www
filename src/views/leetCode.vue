@@ -243,7 +243,7 @@ let intersect2 = function (nums1, nums2) {
 // console.log(intersect2([1,2,2,1], [2,2]));
 
 /**
- * 移动零
+ * 283 移动零
  * 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
  * @answer1 删掉0值，然后添加在最后
  * @answer2 双指针，把非零值往前放，后边加上零值
