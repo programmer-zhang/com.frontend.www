@@ -3,6 +3,28 @@
 </template>
 <script>
 /**
+ * 1 两数之和
+ * @param {number[]} nums 数组
+ * @param {number} target 目标值
+ * @return {number[]}
+ */
+let twoSum = function (nums, target) {
+    if (!nums || !nums.length) {
+        return;
+    }
+    let resArr = [];
+    for (let i = 0, len = nums.length; i < len; i++) {
+        for (let j = i + 1; j < len; j++) {
+            let res = nums[i] + nums[j];
+            if (res === target) {
+                resArr = [i, j];
+                return resArr;
+            }
+        }
+    }
+};
+
+/**
  * 523 中等
  *
  * @param {number[]} nums 原始数组
@@ -280,4 +302,6 @@ let moveZeroes2 = function (nums) {
     return nums;
 };
 // console.log(moveZeroes2([0, 1, 0, 3, 12]));
+
+
 </script>
