@@ -4,6 +4,7 @@
 <script>
 /**
  * 1 两数之和
+ *
  * @param {number[]} nums 数组
  * @param {number} target 目标值
  * @return {number[]}
