@@ -303,6 +303,4 @@ let moveZeroes2 = function (nums) {
     return nums;
 };
 // console.log(moveZeroes2([0, 1, 0, 3, 12]));
-
-
 </script>
