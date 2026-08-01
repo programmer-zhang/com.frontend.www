@@ -7,6 +7,7 @@ yarn-error.log*
 package-lock.json
 node_modules.tar
 yarn.lock
+.workbuddy
 
 # Editor directories and files
 .idea
