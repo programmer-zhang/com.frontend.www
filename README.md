@@ -48,7 +48,3 @@ npm run build --report
 - 在空闲周期里规划一次"现代化迁移"：升级到 webpack 4/5、Babel 7、替换 extract-text-webpack-plugin 为 mini-css-extract-plugin、评估 Vue 版本（2.7 vs 3）和 UI 库（iview 已较老）。
 - `webpack-dev-server@2` 使用了已废弃的 `process.binding('http_parser')` API，在 Node 22 下会产生 deprecation 警告（不影响运行），升级到 webpack 4+ 后可一并解决。
 - 在完成迁移前，尽量在 CI 中固定 Node 版本（例如使用 .nvmrc 或在 CI 配置中指定 Node 18/22）。
-
----
-
-若需我将这些文档更新提交为一个 commit/PR、或把 lockfile 从 .gitignore 中移除并提交，请告知.
