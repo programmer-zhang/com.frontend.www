@@ -173,6 +173,37 @@ export default {
             this.logoutTime = new Date().getTime();
             this.stayTime = ((this.logoutTime - this.loginTime) / 1000).toFixed(2);
             console.log(this.stayTime);
+        },
+        /**
+         * 将数字格式化为带千分符的字符串
+         * @param {number|string} num - 要格式化的数字（支持整数、小数、负数）
+         * @param {string} [separator=','] - 千分符，默认使用逗号
+         * @returns {string} 格式化后的字符串
+         */
+        formatThousands(num, separator = ',') {
+            // 1. 先转成字符串，并处理可能传入的非数字情况
+            let str = String(num);
+
+            // 2. 分离整数部分和小数部分（如果有小数点）
+            const parts = str.split('.');
+            let integerPart = parts[0];          // 整数部分
+            const decimalPart = parts[1] || ''; // 小数部分（没有则为空）
+
+            // 3. 处理负号：先把负号单独拿出来，后面再加回去
+            let sign = '';
+            if (integerPart.startsWith('-')) {
+                sign = '-';
+                integerPart = integerPart.slice(1); // 去掉负号，只处理数字部分
+            }
+
+            // 4. 核心：使用正则给整数部分添加千分符
+            // 正则说明：
+            // (?=(\d{3})+(?!\d))  → 正向预查，匹配后面是「3的倍数个数字，且后面不再有数字」的位置
+            // 从右往左每三位插入一次分隔符
+            integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+
+            // 5. 重新组合：符号 + 整数部分 + 小数部分
+            return sign + integerPart + (decimalPart ? '.' + decimalPart : '');
         }
     }
 }
